@@ -17,7 +17,11 @@
         <FontString name="MI2_MobManaText" inherits="GameFontNormalSmall">
           <Anchors>
             <Anchor point="TOP"/></Anchors>
-          <Color r="1.0" g="1.0" b="1.0"/></FontString></Layer></Layers></Frame>
+          <Color r="1.0" g="1.0" b="1.0"/>
+        </FontString>
+      </Layer>
+    </Layers>
+  </Frame>
   <Button	name="MI2_MinimapButton" parent="Minimap"	frameStrata="MEDIUM">
     <Size x="36" y="36"/>
     <Layers>
@@ -25,15 +29,24 @@
         <Texture name="$parentBorder" file="Interface\Minimap\MiniMap-TrackingBorder">
           <Size x="64" y="64"/>
           <Anchors>
-            <Anchor point="TOPLEFT"/></Anchors></Texture></Layer>
+            <Anchor point="TOPLEFT"/>
+          </Anchors>
+        </Texture>
+      </Layer>
       <Layer level="ARTWORK">
         <Texture name="$parentIcon" file="Interface\CharacterFrame\TemporaryPortrait-Monster">
           <Size x="28" y="28"/>
           <Anchors>
             <Anchor point="TOPLEFT">
               <Offset x="7" y="-6"/>
-            </Anchor></Anchors></Texture></Layer></Layers>
+            </Anchor>
+          </Anchors>
+        </Texture>
+      </Layer>
+    </Layers>
     <HighlightTexture	alphaMode="ADD" file="Interface\Minimap\UI-Minimap-ZoomButton-Highlight"/>
     <Scripts>
       <OnClick>MI2_SlashParse("", self)</OnClick>
-    </Scripts></Button></Ui>
+    </Scripts>
+  </Button>
+</Ui>
