@@ -117,32 +117,32 @@ MI_HELP_IMMUN		= "偵測具有免疫的怪物"
 MI2_OPTIONS = {};
 
 MI2_OPTIONS["MI2_OptSaveBasicInfo"] = 
-			{ text = "記錄怪物並保存詳細怪物資訊"; 
-			help = "此功能可讓你啟用或停用記錄詳細怪物的資訊\n儲存的記錄可以用於顯示在工具提示中, 或是\n用於MobInfo的搜尋工具裡.\n並且你可以從這些資料得知物品掉落的資訊.\n\n備註: 怪物生命力及法力的記錄在此項停用時仍會進行." }
+      { text = "記錄怪物並保存詳細怪物資訊"; 
+      help = "此功能可讓你啟用或停用記錄詳細怪物的資訊\n儲存的記錄可以用於顯示在工具提示中, 或是\n用於MobInfo的搜尋工具裡.\n並且你可以從這些資料得知物品掉落的資訊.\n\n備註: 怪物生命力及法力的記錄在此項停用時仍會進行." }
 
 MI2_OPTIONS["MI2_OptShowMobInfo"] = 
-			{ text = "在MobInfo工具提示顯示怪物資訊"; 
-			help = "啟用工具提示顯示怪物資訊.\n使用這個選項來設定你要在工具提示上顯示\n哪些怪物資料." }
+      { text = "在MobInfo工具提示顯示怪物資訊"; 
+      help = "啟用工具提示顯示怪物資訊.\n使用這個選項來設定你要在工具提示上顯示\n哪些怪物資料." }
 
 MI2_OPTIONS["MI2_OptUseGameTT"] = 
-			{ text = "使用遊戲工具提示替代MobInfo工具提示"; 
-			help = "預設MobInfo使用自定的工具提示框架設定,\n啟用此項來使用遊戲內建工具提示以取代MobInfo工具提示框架設定." }
+      { text = "使用遊戲工具提示替代MobInfo工具提示"; 
+      help = "預設MobInfo使用自定的工具提示框架設定,\n啟用此項來使用遊戲內建工具提示以取代MobInfo工具提示框架設定." }
 
 MI2_OPTIONS["MI2_OptShowItemInfo"] = 
-			{ text = "在物品工具提示顯示進階資訊"; 
-			help = "啟用這個選項將會在工具提示中顯示物品資訊.\n你可以在工具提示選項中你可以設定\n你要顯示的資訊項目."; }
+      { text = "在物品工具提示顯示進階資訊"; 
+      help = "啟用這個選項將會在工具提示中顯示物品資訊.\n你可以在工具提示選項中你可以設定\n你要顯示的資訊項目."; }
 
 MI2_OPTIONS["MI2_OptShowTargetInfo"] = 
-			{ text = "在目標框架顯示怪物資訊 (生命力/法力/其它)"; 
-			help = "在目標框架中顯示目標的生命力/法力等等的數值.\n(只有在沒有安裝任何UnitFrame插件才有作用)\n你可以在目標選項頁面中設定顯示的位置." }
+      { text = "在目標框架顯示怪物資訊 (生命力/法力/其它)"; 
+      help = "在目標框架中顯示目標的生命力/法力等等的數值.\n(只有在沒有安裝任何UnitFrame插件才有作用)\n你可以在目標選項頁面中設定顯示的位置." }
 
 MI2_OPTIONS["MI2_OptShowMMButton"] = 
-			{ text = "顯示小地圖按鈕"; 
-			help = "在小地圖小顯示/隱藏MobInfo按鈕" }
+      { text = "顯示小地圖按鈕"; 
+      help = "在小地圖小顯示/隱藏MobInfo按鈕" }
 
 MI2_OPTIONS["MI2_OptMMButtonPos"] = 
-			{ text = "小地圖按鈕位置"; 
-			help = "使用移動條變更MobInfo按鈕在小地圖上的位置" }
+      { text = "小地圖按鈕位置"; 
+      help = "使用移動條變更MobInfo按鈕在小地圖上的位置" }
 
 
 --------------------
@@ -150,267 +150,267 @@ MI2_OPTIONS["MI2_OptMMButtonPos"] =
 --------------------
 
 MI2_OPTIONS["MI2_OptShowIGrey"] = 
-			{ text = ""; 
-			help = "在工具提示中顯示灰色物品" }
+      { text = ""; 
+      help = "在工具提示中顯示灰色物品" }
 
 MI2_OPTIONS["MI2_OptShowIWhite"] = 
-			{ text = ""; 
-			help = "在工具提示中顯示白色物品" }
+      { text = ""; 
+      help = "在工具提示中顯示白色物品" }
 
 MI2_OPTIONS["MI2_OptShowIGreen"] = 
-			{ text = ""; 
-			help = "在工具提示中顯示綠色物品" }
+      { text = ""; 
+      help = "在工具提示中顯示綠色物品" }
 
 MI2_OPTIONS["MI2_OptShowIBlue"] = 
-			{ text = ""; 
-			help = "在工具提示中顯示藍色物品" }
+      { text = ""; 
+      help = "在工具提示中顯示藍色物品" }
 
 MI2_OPTIONS["MI2_OptShowIPurple"] = 
-			{ text = ""; 
-			help = "在工具提示中顯示紫色物品" }
+      { text = ""; 
+      help = "在工具提示中顯示紫色物品" }
 
 MI2_OPTIONS["MI2_OptMouseTooltip"] = 
-			{ text = "在鼠標上顯示工具提示"; 
-			help = "在鼠標上顯示MobInfo的工具提示\n並且會隨著鼠標而移動." }
+      { text = "在鼠標上顯示工具提示"; 
+      help = "在鼠標上顯示MobInfo的工具提示\n並且會隨著鼠標而移動." }
 
 MI2_OPTIONS["MI2_OptHideAnchor"] = 
-			{ text = "隱藏工具提示錨點"; 
-			help = "隱藏MobInfo工具提示上的'MI'錨點." }
+      { text = "隱藏工具提示錨點"; 
+      help = "隱藏MobInfo工具提示上的'MI'錨點." }
 
 MI2_OPTIONS["MI2_OptShowCombined"] = 
-			{ text = "合併怪物資訊"; 
-			help = "在工具提示合併怪物等級資訊." }
+      { text = "合併怪物資訊"; 
+      help = "在工具提示合併怪物等級資訊." }
 
 MI2_OPTIONS["MI2_OptSmallFont"] = 
-			{ text = "使用小字體"; 
-			help = "工具提示使用小字體" }
+      { text = "使用小字體"; 
+      help = "工具提示使用小字體" }
 
 MI2_OPTIONS["MI2_OptTooltipMode"] = 
-			{ text = "工具提示位置"; 
-			help = "設定工具提示視窗的位置."; choice1 = "左上"; choice2 = "左下"; choice3 = "右上 "; choice4 = "右下"; choice5="Center Above"; choice6="Center Below" }
+      { text = "工具提示位置"; 
+      help = "設定工具提示視窗的位置."; choice1 = "左上"; choice2 = "左下"; choice3 = "右上 "; choice4 = "右下"; choice5="Center Above"; choice6="Center Below" }
 
 MI2_OPTIONS["MI2_OptCompactMode"] =
-			{ text = "雙列工具提示"; 
-			help = "用雙列工具提示視窗顯示怪物資訊.\n工具提示視窗會變得更寬\n但有一定的限制." }
+      { text = "雙列工具提示"; 
+      help = "用雙列工具提示視窗顯示怪物資訊.\n工具提示視窗會變得更寬\n但有一定的限制." }
 
 MI2_OPTIONS["MI2_OptOtherTooltip"] =
-			{ text = "關閉其它工具提示"; 
-			help = "當工具提示顯示怪物資訊時關閉其它的提示訊息." }
+      { text = "關閉其它工具提示"; 
+      help = "當工具提示顯示怪物資訊時關閉其它的提示訊息." }
 
 MI2_OPTIONS["MI2_OptSearchMinLevel"] = 
-			{ text = "最小"; 
-			help = "搜尋怪物時的最小等級限制"; }
+      { text = "最小"; 
+      help = "搜尋怪物時的最小等級限制"; }
 
 MI2_OPTIONS["MI2_OptSearchMaxLevel"] = 
-			{ text = "最大"; 
-			help = "搜尋怪物時的最大等級限制(必須< 66)"; }
+      { text = "最大"; 
+      help = "搜尋怪物時的最大等級限制(必須< 66)"; }
 
 MI2_OPTIONS["MI2_OptSearchNormal"] = 
-			{ text = "普通"; 
-			help = "在搜尋結果中包含普通怪物"; }
+      { text = "普通"; 
+      help = "在搜尋結果中包含普通怪物"; }
 
 MI2_OPTIONS["MI2_OptSearchElite"] = 
-			{ text = "精英"; 
-			help = "在搜尋結果中包含精英怪"; }
+      { text = "精英"; 
+      help = "在搜尋結果中包含精英怪"; }
 
 MI2_OPTIONS["MI2_OptSearchBoss"] = 
-			{ text = "首領"; 
-			help = "在搜尋結果中包含首領級別的怪物"; }
+      { text = "首領"; 
+      help = "在搜尋結果中包含首領級別的怪物"; }
 
 MI2_OPTIONS["MI2_OptSearchMinLoots"] = 
-			{ text = "最小"; 
-			help = "搜尋結果中的怪物，必須「拾取其物品」過的最小次數"; }
+      { text = "最小"; 
+      help = "搜尋結果中的怪物，必須「拾取其物品」過的最小次數"; }
 
 MI2_OPTIONS["MI2_OptSearchMaxLoots"] = 
-			{ text = "最大"; 
-			help = "搜尋結果中的怪物，必須「拾取其物品」過的最小次數"; }
+      { text = "最大"; 
+      help = "搜尋結果中的怪物，必須「拾取其物品」過的最小次數"; }
 
 MI2_OPTIONS["MI2_OptSearchMobName"] = 
-			{ text = "怪物名稱"; 
-			help = "想要搜尋的怪物的部分，或者完整名稱"; 
-			info = '空白時，不限制搜尋全部的物品。輸入"*"搜尋全部物品'; }  
+      { text = "怪物名稱"; 
+      help = "想要搜尋的怪物的部分，或者完整名稱"; 
+      info = '空白時，不限制搜尋全部的物品。輸入"*"搜尋全部物品'; }  
 
 MI2_OPTIONS["MI2_OptSearchItemName"] = 
-			{ text = "物品名稱"; 
-			help = "想要搜尋的物品部分或者完整名稱";
-			info = '空白時將會搜尋所有物品名稱'; }	
+      { text = "物品名稱"; 
+      help = "想要搜尋的物品部分或者完整名稱";
+      info = '空白時將會搜尋所有物品名稱'; }	
 
 MI2_OPTIONS["MI2_OptSortByValue"] = 
-			{ text = "按數值分類"; 
-			help = "分類搜尋結果按怪物值"; 
-			info = '按你能夠對怪物造成的傷害值，來尋找它們。'; }
+      { text = "按數值分類"; 
+      help = "分類搜尋結果按怪物值"; 
+      info = '按你能夠對怪物造成的傷害值，來尋找它們。'; }
 
 MI2_OPTIONS["MI2_OptSortByItem"] = 
-			{ text = "按物品數分類"; 
-			help = "分類搜尋結果按物品數列表"; 
-			info = '按怪物掉落指定物品的品質分類尋找到的怪物。'; }
+      { text = "按物品數分類"; 
+      help = "分類搜尋結果按物品數列表"; 
+      info = '按怪物掉落指定物品的品質分類尋找到的怪物。'; }
 
 MI2_OPTIONS["MI2_OptItemTooltip"] = 
-			{ text = "物品資訊欄顯示掉落怪物"; 
-			help = "在物品的提示資訊中，顯示掉落該物品的怪物名稱"; 
-			info = "在提示資訊中顯示可掉落滑鼠所指物品的所有怪物。\n每行顯示該怪物掉落的物品數量及占總數的百分比。" }
+      { text = "物品資訊欄顯示掉落怪物"; 
+      help = "在物品的提示資訊中，顯示掉落該物品的怪物名稱"; 
+      info = "在提示資訊中顯示可掉落滑鼠所指物品的所有怪物。\n每行顯示該怪物掉落的物品數量及占總數的百分比。" }
 
 MI2_OPTIONS["MI2_OptShowItemPrice"] =
-			{ text = "顯示商店售價"; 
-			help = "在物品的提示資訊中，顯示該物品的商店售出價格" }
+      { text = "顯示商店售價"; 
+      help = "在物品的提示資訊中，顯示該物品的商店售出價格" }
 
 MI2_OPTIONS["MI2_OptCombinedMode"] = 
-			{ text = "整合相同怪物"; help = "對同樣名字的怪物合併計算"; 
-			info = "整合模式會合併計算相同名字，但不同等級的怪物。\n啟用後將使得不同等級但是同一名字的怪物，其資料顯示一致。" }
+      { text = "整合相同怪物"; help = "對同樣名字的怪物合併計算"; 
+      info = "整合模式會合併計算相同名字，但不同等級的怪物。\n啟用後將使得不同等級但是同一名字的怪物，其資料顯示一致。" }
 
 MI2_OPTIONS["MI2_OptKeypressMode"] = 
-			{ text = "按住ALT顯示怪物資訊"; 
-			help = "只有按下ALT才會在提示框顯示怪物資訊"; }
+      { text = "按住ALT顯示怪物資訊"; 
+      help = "只有按下ALT才會在提示框顯示怪物資訊"; }
 
 MI2_OPTIONS["MI2_OptItemFilter"] = 
-			{ text = ""; 
-			help = "設置提示資訊裏顯示的拾取物品的過濾條件";
-			info = "只在提示資訊中顯示那些包含過濾文本的物品。\n例如輸入'布'將只顯示物品名稱包含'布'的物品。\n不輸入任何文字查看所有物品。" }
+      { text = ""; 
+      help = "設置提示資訊裏顯示的拾取物品的過濾條件";
+      info = "只在提示資訊中顯示那些包含過濾文本的物品。\n例如輸入'布'將只顯示物品名稱包含'布'的物品。\n不輸入任何文字查看所有物品。" }
 
 MI2_OPTIONS["MI2_OptSavePlayerHp"] = 
-			{ text = "永久儲存玩家生命力"; 
-			help = "永久儲存在PVP戰鬥中獲得的玩家生命力資料。";
-			info = "一般情況下PVP戰鬥結束\n後玩家生命力資料將被丟棄，這\n個選項允許你記錄該資料。" }
+      { text = "永久儲存玩家生命力"; 
+      help = "永久儲存在PVP戰鬥中獲得的玩家生命力資料。";
+      info = "一般情況下PVP戰鬥結束\n後玩家生命力資料將被丟棄，這\n個選項允許你記錄該資料。" }
 
 MI2_OPTIONS["MI2_OptAllOn"] = 
-			{ text = "顯示全開"; 
-			help = "將所有的顯示選項打開"; }
+      { text = "顯示全開"; 
+      help = "將所有的顯示選項打開"; }
 
 MI2_OPTIONS["MI2_OptAllOff"] = 
-			{ text = "顯示全關"; 
-			help = "將所有的顯示選項關閉"; }
+      { text = "顯示全關"; 
+      help = "將所有的顯示選項關閉"; }
 
 MI2_OPTIONS["MI2_OptDefault"] = 
-			{ text = "預設"; 
-			help = "顯示預設的怪物資訊"; }
+      { text = "預設"; 
+      help = "顯示預設的怪物資訊"; }
 
 MI2_OPTIONS["MI2_OptBtnDone"] = 
-			{ text = "完成"; 
-			help = "關閉 MobInfo 選項對話方塊"; }
+      { text = "完成"; 
+      help = "關閉 MobInfo 選項對話方塊"; }
 
 MI2_OPTIONS["MI2_OptTargetHealth"] = 
-			{ text = "顯示生命力"; 
-			help = "在目標框顯示生命力"; }
+      { text = "顯示生命力"; 
+      help = "在目標框顯示生命力"; }
 
 MI2_OPTIONS["MI2_OptTargetMana"] = 
-			{ text = "顯示法力值"; 
-			help = "在目標框顯示法力值"; }
+      { text = "顯示法力值"; 
+      help = "在目標框顯示法力值"; }
 
 MI2_OPTIONS["MI2_OptHealthPercent"] = 
-			{ text = "顯示百分比"; 
-			help = "在目標框顯示生命力百分比"; }
+      { text = "顯示百分比"; 
+      help = "在目標框顯示生命力百分比"; }
 
 MI2_OPTIONS["MI2_OptManaPercent"] = 
-			{ text = "顯示百分比"; 
-			help = "在目標框顯示法力值百分比"; }
+      { text = "顯示百分比"; 
+      help = "在目標框顯示法力值百分比"; }
 
 MI2_OPTIONS["MI2_OptHealthPosX"] = 
-			{ text = "水平位置"; 
-			help = "調整生命力的水平位置"; }
+      { text = "水平位置"; 
+      help = "調整生命力的水平位置"; }
 
 MI2_OPTIONS["MI2_OptHealthPosY"] = 
-			{ text = "垂直位置"; 
-			help = "調整生命力的垂直位置"; }
+      { text = "垂直位置"; 
+      help = "調整生命力的垂直位置"; }
 
 MI2_OPTIONS["MI2_OptManaPosX"] = 
-			{ text = "水平位置"; 
-			help = "調整法力值的水平位置"; }
+      { text = "水平位置"; 
+      help = "調整法力值的水平位置"; }
 
 MI2_OPTIONS["MI2_OptManaPosY"] = 
-			{ text = "垂直位置"; 
-			help = "調整法力值的垂直位置"; }
+      { text = "垂直位置"; 
+      help = "調整法力值的垂直位置"; }
 
 MI2_OPTIONS["MI2_OptTargetFont"] = 
-			{ text = "字體"; 
-			help = "設定生命/法力值的顯示字體";
-			choice1= "數值字體"; choice2="遊戲字體"; choice3="物品資訊字體" }
+      { text = "字體"; 
+      help = "設定生命/法力值的顯示字體";
+      choice1= "數值字體"; choice2="遊戲字體"; choice3="物品資訊字體" }
 
 MI2_OPTIONS["MI2_OptTargetFontSize"] = 
-			{ text = "字體大小"; 
-			help = "設定生命/法力值的顯示字體大小。"; }
+      { text = "字體大小"; 
+      help = "設定生命/法力值的顯示字體大小。"; }
 
 MI2_OPTIONS["MI2_OptClearTarget"] = 
-			{ text = "清除目前目標資料"; 
-			help = "清除目前目標的資料。"; }
+      { text = "清除目前目標資料"; 
+      help = "清除目前目標的資料。"; }
 
 MI2_OPTIONS["MI2_OptClearMobDb"] = 
-			{ text = "清除怪物資料"; 
-			help = "清除全部怪物資訊資料。"; }
+      { text = "清除怪物資料"; 
+      help = "清除全部怪物資訊資料。"; }
 
 MI2_OPTIONS["MI2_OptClearHealthDb"] = 
-			{ text = "清除生命力資料"; 
-			help = "清除全部怪物生命力資料。"; }
+      { text = "清除生命力資料"; 
+      help = "清除全部怪物生命力資料。"; }
 
 MI2_OPTIONS["MI2_OptClearPlayerDb"] = 
-			{ text = "清除玩家資料"; 
-			help = "清除全部玩家生命力資料。"; }
+      { text = "清除玩家資料"; 
+      help = "清除全部玩家生命力資料。"; }
 
 MI2_OPTIONS["MI2_OptSaveItems"] = 
-			{ text = "記錄以下品質的掉落物品資料:"; 
-			help = "開啟後記錄所有MobInfo所能記的怪物相關資料。";
-			info = "你可以選擇想記錄的物品的品質等級。"; }
+      { text = "記錄以下品質的掉落物品資料:"; 
+      help = "開啟後記錄所有MobInfo所能記的怪物相關資料。";
+      info = "你可以選擇想記錄的物品的品質等級。"; }
 
 MI2_OPTIONS["MI2_OptSaveCharData"] = 
-			{ text = "記錄角色相關的怪物資料"; 
-			help = "開啟後記錄所有和玩家角色有關的怪物資訊。";
-			info = "開啟或關閉保存以下資料：\n擊殺次數、最大／最小傷害、DPS (每秒傷害值)\n\n這些資料將依玩家角色分開儲存。\n這幾個資料只能同時設定為『儲存』或『不儲存』。"; }
+      { text = "記錄角色相關的怪物資料"; 
+      help = "開啟後記錄所有和玩家角色有關的怪物資訊。";
+      info = "開啟或關閉保存以下資料：\n擊殺次數、最大／最小傷害、DPS (每秒傷害值)\n\n這些資料將依玩家角色分開儲存。\n這幾個資料只能同時設定為『儲存』或『不儲存』。"; }
 
 MI2_OPTIONS["MI2_OptSaveResist"] = 
-			{ text = "記錄抵抗和免疫資料"; 
-			help = "記錄怪物對各種性質的法術的抵抗和免疫的資料。";
-			info = "記錄怪物對各種屬性法術的抵抗和免疫的統計資料。"; }
+      { text = "記錄抵抗和免疫資料"; 
+      help = "記錄怪物對各種性質的法術的抵抗和免疫的資料。";
+      info = "記錄怪物對各種屬性法術的抵抗和免疫的統計資料。"; }
 
 MI2_OPTIONS["MI2_OptItemsQuality"] = 
-			{ text = ""; 
-			help = "記錄指定品質(含)更好的物品詳細資訊。"; 
-			choice1 = "灰色以及更好"; choice2="白色以及更好"; choice3="綠色以及更好" }
+      { text = ""; 
+      help = "記錄指定品質(含)更好的物品詳細資訊。"; 
+      choice1 = "灰色以及更好"; choice2="白色以及更好"; choice3="綠色以及更好" }
 
 MI2_OPTIONS["MI2_OptTrimDownMobData"] = 
-			{ text = "最佳化怪物資料庫大小"; 
-			help = "移除過剩的資料，以最佳化怪物資料庫大小。";
-			info = "過剩的資料是指資料庫裡，未被設定為需要記錄的全部資料。"; }
+      { text = "最佳化怪物資料庫大小"; 
+      help = "移除過剩的資料，以最佳化怪物資料庫大小。";
+      info = "過剩的資料是指資料庫裡，未被設定為需要記錄的全部資料。"; }
 
 MI2_OPTIONS["MI2_OptImportMobData"] = 
-			{ text = "開始匯入"; 
-			help = "匯入外部資料到你自己的怪物資料庫";
-			info = "注意：請仔細詳讀匯入步驟的指示！\n一定要在匯入前，先備份自己的資料庫，以免造成資料永久遺失！"; }
+      { text = "開始匯入"; 
+      help = "匯入外部資料到你自己的怪物資料庫";
+      info = "注意：請仔細詳讀匯入步驟的指示！\n一定要在匯入前，先備份自己的資料庫，以免造成資料永久遺失！"; }
 
 MI2_OPTIONS["MI2_OptDeleteSearch"] = 
-			{ text = "刪除"; 
-			help = "自資料庫中，刪除所有在搜尋結果中的怪物資料。";
-			info = "警告：本步驟是沒辦法復原的，\n使用前請小心！\n建議在刪除這些資料前，先備份自己的資料庫。"; }
+      { text = "刪除"; 
+      help = "自資料庫中，刪除所有在搜尋結果中的怪物資料。";
+      info = "警告：本步驟是沒辦法復原的，\n使用前請小心！\n建議在刪除這些資料前，先備份自己的資料庫。"; }
 
 MI2_OPTIONS["MI2_OptImportOnlyNew"] = 
-			{ text = "只匯入目前還未知的怪物資料"; 
-			help = "匯入目前在你的資料庫中，還沒有記錄的資料";
-			info = "開啟這個選項可以預防現在已存在的資料，被匯入的資料蓋掉，\n只有目前未知(新的)資料會匯入資料庫。\n如此可以確保原資料的一致性。"; }
+      { text = "只匯入目前還未知的怪物資料"; 
+      help = "匯入目前在你的資料庫中，還沒有記錄的資料";
+      info = "開啟這個選項可以預防現在已存在的資料，被匯入的資料蓋掉，\n只有目前未知(新的)資料會匯入資料庫。\n如此可以確保原資料的一致性。"; }
 
 MI2_OPTIONS["MI2_SearchResultFrameTab1"] = 
-			{ text = "怪物列表"; 
-			help = ""; }
+      { text = "怪物列表"; 
+      help = ""; }
 
 MI2_OPTIONS["MI2_SearchResultFrameTab2"] = 
-			{ text = "物品列表"; 
-			help = ""; }
+      { text = "物品列表"; 
+      help = ""; }
 
 MI2_OPTIONS["MI2_OptionsTabFrameTab1"] = 
-			{ text = "提示資訊選項"; 
-			help = "設定在提示資訊裏面，顯示的怪物資訊選項"; }
+      { text = "提示資訊選項"; 
+      help = "設定在提示資訊裏面，顯示的怪物資訊選項"; }
 
 MI2_OPTIONS["MI2_OptionsTabFrameTab2"] = 
-			{ text = "生命/法力值"; 
-			help = "設置目標框中顯示生命/法力值的選項"; }
+      { text = "生命/法力值"; 
+      help = "設置目標框中顯示生命/法力值的選項"; }
 
 MI2_OPTIONS["MI2_OptionsTabFrameTab3"] = 
-			{ text = "資料庫"; 
-			help = "資料庫管理選項"; }
+      { text = "資料庫"; 
+      help = "資料庫管理選項"; }
 
 MI2_OPTIONS["MI2_OptionsTabFrameTab4"] = 
-			{ text = "搜尋"; 
-			help = "搜尋資料庫"; }
+      { text = "搜尋"; 
+      help = "搜尋資料庫"; }
 
 MI2_OPTIONS["MI2_OptionsTabFrameTab5"] = 
-			{ text = "一般"; 
-			help = "MobInfo插件的一般選項"; }
+      { text = "一般"; 
+      help = "MobInfo插件的一般選項"; }
 
 end

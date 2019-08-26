@@ -34,19 +34,19 @@ MI2_OPTIONS["MI2_OptShowClothSkin"]	= { text=MI_TXT_CLOTHSKIN; help=MI_HELP_CLOT
 -- ESC key handler.
 --
 function MI2_OptionsFrameOnLoad()
-	tinsert(UISpecialFrames, "MI2_OptionsFrame") -- Esc Closes Options Frame
-	UIPanelWindows["MI2_OptionsFrame"] = {area = "center", pushable = 0}
+  tinsert(UISpecialFrames, "MI2_OptionsFrame") -- Esc Closes Options Frame
+  UIPanelWindows["MI2_OptionsFrame"] = {area = "center", pushable = 0}
 
-	PanelTemplates_SetNumTabs( MI2_OptionsTabFrame, 5 )
-	MI2_OptionsTabFrame.selectedTab = 5
-	PanelTemplates_UpdateTabs( MI2_OptionsTabFrame )
+  PanelTemplates_SetNumTabs( MI2_OptionsTabFrame, 5 )
+  MI2_OptionsTabFrame.selectedTab = 5
+  PanelTemplates_UpdateTabs( MI2_OptionsTabFrame )
 
-	MI2_TxtOptionsTitle:SetText( "MobInfo2 "..miVersionNo )
-	
+  MI2_TxtOptionsTitle:SetText( "MobInfo2 "..miVersionNo )
+  
 --	MI2_OptShowCombined:Disable()
 --	MI2_OptShowCombinedText:SetTextColor( 0.5,0.5,0.5 )
 
-	MI2_MainOptionsFrame = MI2_OptionsTabFrame
+  MI2_MainOptionsFrame = MI2_OptionsTabFrame
 end  -- MI2_OptionsFrameOnLoad()
 
 
@@ -57,34 +57,34 @@ end  -- MI2_OptionsFrameOnLoad()
 -- data structure "MobInfoConfig".
 --
 function MI2_UpdateOptions()
-	if MobInfoConfig.ShowMobInfo == 1 then
-		MI2_OptUseGameTT:Enable()
-		MI2_OptUseGameTTText:SetTextColor( 1.0,0.8,0.0 )
-	else
-		MI2_OptUseGameTT:Disable()
-		MI2_OptUseGameTTText:SetTextColor( 0.5,0.5,0.5 )
-	end
+  if MobInfoConfig.ShowMobInfo == 1 then
+    MI2_OptUseGameTT:Enable()
+    MI2_OptUseGameTTText:SetTextColor( 1.0,0.8,0.0 )
+  else
+    MI2_OptUseGameTT:Disable()
+    MI2_OptUseGameTTText:SetTextColor( 0.5,0.5,0.5 )
+  end
 
-	local index, value
-	for index, value in pairs(MI2_OPTIONS) do
-		local option = string.sub(index,8)
-		local control = _G[index]
-		if  control and MobInfoConfig[option] then
-			if value.dd then
-				-- do nothing for dropdowns
-			elseif value.val then
-				control:SetValue( MobInfoConfig[option] )
-			elseif value.txt then
-				control:SetText( MobInfoConfig[option] )
-			elseif control.SetChecked then
-				if not MobInfoConfig[option] or MobInfoConfig[option] == 0 then
-					control:SetChecked( false )
-				else
-					control:SetChecked( true )
-				end
-			end
-		end
-	end
+  local index, value
+  for index, value in pairs(MI2_OPTIONS) do
+    local option = string.sub(index,8)
+    local control = _G[index]
+    if  control and MobInfoConfig[option] then
+      if value.dd then
+        -- do nothing for dropdowns
+      elseif value.val then
+        control:SetValue( MobInfoConfig[option] )
+      elseif value.txt then
+        control:SetText( MobInfoConfig[option] )
+      elseif control.SetChecked then
+        if not MobInfoConfig[option] or MobInfoConfig[option] == 0 then
+          control:SetChecked( false )
+        else
+          control:SetChecked( true )
+        end
+      end
+    end
+  end
 end  -- MI2_UpdateOptions()
 
 
@@ -95,14 +95,14 @@ end  -- MI2_UpdateOptions()
 -- in the game tooltip window.
 --
 function MI2_ShowOptionHelpTooltip(self)
-	GameTooltip_SetDefaultAnchor( GameTooltip, UIParent )
-	GameTooltip:SetText( MI_White..MI2_OPTIONS[self:GetName()].text )
-	  
-	GameTooltip:AddLine(MI_Gold..MI2_OPTIONS[self:GetName()].help)
-	if MI2_OPTIONS[self:GetName()].info then
-		GameTooltip:AddLine(MI_Gold..MI2_OPTIONS[self:GetName()].info)
-	end
-	GameTooltip:Show()
+  GameTooltip_SetDefaultAnchor( GameTooltip, UIParent )
+  GameTooltip:SetText( MI_White..MI2_OPTIONS[self:GetName()].text )
+    
+  GameTooltip:AddLine(MI_Gold..MI2_OPTIONS[self:GetName()].help)
+  if MI2_OPTIONS[self:GetName()].info then
+    GameTooltip:AddLine(MI_Gold..MI2_OPTIONS[self:GetName()].info)
+  end
+  GameTooltip:Show()
 end -- of MI2_ShowOptionHelpTooltip()
 
 
@@ -113,33 +113,33 @@ end -- of MI2_ShowOptionHelpTooltip()
 -- in the game tooltip window.
 --
 function MI2_OptionsFrameOnShow()
-	MI2_UpdateOptions()
-	MI2_TooltipAnchor:SetFrameStrata( "HIGH" )
-	MI2_UpdateAnchor()
+  MI2_UpdateOptions()
+  MI2_TooltipAnchor:SetFrameStrata( "HIGH" )
+  MI2_UpdateAnchor()
 end  -- MI2_OptionsFrameOnShow()
 
 
 function miConfig_OnMouseDown(self, button)
-	if button == "LeftButton" then
-		self:StartMoving()
-	end
+  if button == "LeftButton" then
+    self:StartMoving()
+  end
 end
 
 
 function miConfig_OnMouseUp(self, button)
-	if button == "LeftButton" then
-		self:StopMovingOrSizing()
-	end
+  if button == "LeftButton" then
+    self:StopMovingOrSizing()
+  end
 end
 
 
 function MI2_DoneButton_OnClick(self)
-	HideUIPanel(MI2_OptionsFrame)
-	if MYADDONS_ACTIVE_OPTIONSFRAME then
-		if (MYADDONS_ACTIVE_OPTIONSFRAME == self) then
-			ShowUIPanel(myAddOnsFrame)
-		end
-	end
+  HideUIPanel(MI2_OptionsFrame)
+  if MYADDONS_ACTIVE_OPTIONSFRAME then
+    if (MYADDONS_ACTIVE_OPTIONSFRAME == self) then
+      ShowUIPanel(myAddOnsFrame)
+    end
+  end
 end
 
 -----------------------------------------------------------------------------
@@ -149,40 +149,40 @@ end
 -- Show the corresponding options frame and hide all other option frames.
 --
 function MI2_TabButton_OnClick( self )
-	PanelTemplates_Tab_OnClick( self, MI2_OptionsTabFrame )
-	local selected = MI2_OptionsTabFrame.selectedTab
+  PanelTemplates_Tab_OnClick( self, MI2_OptionsTabFrame )
+  local selected = MI2_OptionsTabFrame.selectedTab
 
-	-- choose special information frame if mob health has been disabled
-	local healthFrame = MI2_TargetOptionsFrame
-	if  MobInfoConfig.DisableHealth == 2  then
-		healthFrame = MI2_FrmHealthDisabledInfo
-	end
+  -- choose special information frame if mob health has been disabled
+  local healthFrame = MI2_TargetOptionsFrame
+  if  MobInfoConfig.DisableHealth == 2  then
+    healthFrame = MI2_FrmHealthDisabledInfo
+  end
 
-	if  selected == 1  then
-		MI2_TooltipOptionsFrame:Show()
-	else
-		MI2_TooltipOptionsFrame:Hide()
-	end
-	if  selected == 2  then
-		healthFrame:Show()
-	else
-		healthFrame:Hide()
-	end
-	if  selected == 3  then
-		MI2_DatabaseOptionsFrame:Show()
-	else
-		MI2_DatabaseOptionsFrame:Hide()
-	end
-	if  selected == 4  then
-		MI2_SearchOptionsFrame:Show()
-	else
-		MI2_SearchOptionsFrame:Hide()
-	end
-	if  selected == 5  then
-		MI2_GeneralOptionsFrame:Show()
-	else
-		MI2_GeneralOptionsFrame:Hide()
-	end
+  if  selected == 1  then
+    MI2_TooltipOptionsFrame:Show()
+  else
+    MI2_TooltipOptionsFrame:Hide()
+  end
+  if  selected == 2  then
+    healthFrame:Show()
+  else
+    healthFrame:Hide()
+  end
+  if  selected == 3  then
+    MI2_DatabaseOptionsFrame:Show()
+  else
+    MI2_DatabaseOptionsFrame:Hide()
+  end
+  if  selected == 4  then
+    MI2_SearchOptionsFrame:Show()
+  else
+    MI2_SearchOptionsFrame:Hide()
+  end
+  if  selected == 5  then
+    MI2_GeneralOptionsFrame:Show()
+  else
+    MI2_GeneralOptionsFrame:Hide()
+  end
 end
 
 
@@ -193,12 +193,12 @@ end
 -- clicked. Store it as a config option.
 --
 function MI2_OptTargetFont_OnClick(self)
-	local oldID = UIDropDownMenu_GetSelectedID( MI2_OptTargetFont )
-	UIDropDownMenu_SetSelectedID( MI2_OptTargetFont, self:GetID())
-	if  oldID ~= self:GetID()  then
-		MobInfoConfig.TargetFont = self:GetID()
-		MI2_MobHealth_SetPos()
-	end
+  local oldID = UIDropDownMenu_GetSelectedID( MI2_OptTargetFont )
+  UIDropDownMenu_SetSelectedID( MI2_OptTargetFont, self:GetID())
+  if  oldID ~= self:GetID()  then
+    MobInfoConfig.TargetFont = self:GetID()
+    MI2_MobHealth_SetPos()
+  end
 end  -- MI2_OptTargetFont_OnClick()
 
 
@@ -209,11 +209,11 @@ end  -- MI2_OptTargetFont_OnClick()
 -- clicked. Store it as a config option.
 --
 function MI2_OptItemsQuality_OnClick(self)
-	local oldID = UIDropDownMenu_GetSelectedID( MI2_OptItemsQuality )
-	UIDropDownMenu_SetSelectedID( MI2_OptItemsQuality, self:GetID())
-	if  oldID ~= self:GetID()  then
-		MobInfoConfig.ItemsQuality = self:GetID()
-	end
+  local oldID = UIDropDownMenu_GetSelectedID( MI2_OptItemsQuality )
+  UIDropDownMenu_SetSelectedID( MI2_OptItemsQuality, self:GetID())
+  if  oldID ~= self:GetID()  then
+    MobInfoConfig.ItemsQuality = self:GetID()
+  end
 end  -- MI2_OptItemsQuality_OnClick()
 
 
@@ -224,12 +224,12 @@ end  -- MI2_OptItemsQuality_OnClick()
 -- clicked. Store it as a config option.
 --
 function MI2_OptTooltipMode_OnClick(self)
-	local oldID = UIDropDownMenu_GetSelectedID( MI2_OptTooltipMode )
-	UIDropDownMenu_SetSelectedID( MI2_OptTooltipMode, self:GetID())
-	if  oldID ~= self:GetID()  then
-		MobInfoConfig.TooltipMode = self:GetID()
-	end
-	MI2_SetupTooltip()
+  local oldID = UIDropDownMenu_GetSelectedID( MI2_OptTooltipMode )
+  UIDropDownMenu_SetSelectedID( MI2_OptTooltipMode, self:GetID())
+  if  oldID ~= self:GetID()  then
+    MobInfoConfig.TooltipMode = self:GetID()
+  end
+  MI2_SetupTooltip()
 end  -- MI2_OptTooltipMode_OnClick()
 
 
@@ -240,18 +240,18 @@ end  -- MI2_OptTooltipMode_OnClick()
 -- localization info.
 --
 function MI2_DropDown_Initialize(self)
-	if self:GetObjectType() ~= "Button" then return end
-	
-	local dropDownName = self:GetName()
-	local choice = MI2_OPTIONS[dropDownName].choice1
-	local count = 1
+  if self:GetObjectType() ~= "Button" then return end
+  
+  local dropDownName = self:GetName()
+  local choice = MI2_OPTIONS[dropDownName].choice1
+  local count = 1
 
-	while choice do
-		local info = { text = choice, value = count, func = _G[dropDownName.."_OnClick"] }
-		UIDropDownMenu_AddButton( info )
-		count = count + 1
-		choice = MI2_OPTIONS[dropDownName]["choice"..count] 
-	end
+  while choice do
+    local info = { text = choice, value = count, func = _G[dropDownName.."_OnClick"] }
+    UIDropDownMenu_AddButton( info )
+    count = count + 1
+    choice = MI2_OPTIONS[dropDownName]["choice"..count] 
+  end
 end  -- MI2_DropDown_Initialize()
 
 
@@ -262,12 +262,12 @@ end  -- MI2_DropDown_Initialize()
 -- Ensure that current selection is shown correctly.
 --
 function MI2_DropDown_OnShow(self)
-	local frameName = self:GetName()
-	local itemName = string.sub(frameName, 8)
-	local text=MI2_OPTIONS[frameName]["choice"..MobInfoConfig[itemName]]
+  local frameName = self:GetName()
+  local itemName = string.sub(frameName, 8)
+  local text=MI2_OPTIONS[frameName]["choice"..MobInfoConfig[itemName]]
 
-	UIDropDownMenu_SetSelectedID( self, MobInfoConfig[itemName] )
-	UIDropDownMenu_SetText( self, text ) 
+  UIDropDownMenu_SetSelectedID( self, MobInfoConfig[itemName] )
+  UIDropDownMenu_SetText( self, text )
 end  -- MI2_DropDown_OnShow()
 
 
@@ -276,51 +276,51 @@ end  -- MI2_DropDown_OnShow()
 --
 --
 function MI2_DbOptionsFrameOnShow()
-	local mobDbSize, healthDbSize, playerDbSize, itemDbSize = 0, 0, 0, 0
+  local mobDbSize, healthDbSize, playerDbSize, itemDbSize = 0, 0, 0, 0
 
-	-- count and diplay size of MobInfo database
-	for index in pairs(MobInfoDB) do  mobDbSize = mobDbSize + 1  end
-	MI2_TxtMobDbSize:SetText( MI_TXT_MOB_DB_SIZE..MI_White..(mobDbSize-1) )
+  -- count and diplay size of MobInfo database
+  for index in pairs(MobInfoDB) do  mobDbSize = mobDbSize + 1  end
+  MI2_TxtMobDbSize:SetText( MI_TXT_MOB_DB_SIZE..MI_White..(mobDbSize-1) )
 
-	-- count and diplay size of MobHealth database
-	for index in pairs(MobHealthDB) do  healthDbSize = healthDbSize + 1  end
-	MI2_TxtHealthDbSize:SetText( MI_TXT_HEALTH_DB_SIZE..MI_White..healthDbSize )
+  -- count and diplay size of MobHealth database
+  for index in pairs(MobHealthDB) do  healthDbSize = healthDbSize + 1  end
+  MI2_TxtHealthDbSize:SetText( MI_TXT_HEALTH_DB_SIZE..MI_White..healthDbSize )
 
-	-- count and diplay size of MobHealthPlayer database
-	for index in pairs(MobHealthPlayerDB) do  playerDbSize = playerDbSize + 1  end
-	MI2_TxtPlayerDbSize:SetText( MI_TXT_PLAYER_DB_SIZE..MI_White..playerDbSize )
+  -- count and diplay size of MobHealthPlayer database
+  for index in pairs(MobHealthPlayerDB) do  playerDbSize = playerDbSize + 1  end
+  MI2_TxtPlayerDbSize:SetText( MI_TXT_PLAYER_DB_SIZE..MI_White..playerDbSize )
 
-	-- count and diplay size of MI2_ItemNameTable database
+  -- count and diplay size of MI2_ItemNameTable database
 --	for  index in MI2_ItemNameTable  do  itemDbSize = itemDbSize + 1  end
 --	MI2_TxtItemDbSize:SetText( MI_TXT_ITEM_DB_SIZE..MI_White..itemDbSize )
 
-	-- update mob index display and state of "clear mob" button
-	if MI2_Target.mobIndex and MobInfoDB[MI2_Target.mobIndex] then
-		MI2_OptClearTarget:Enable()
-		MI2_TxtTargetIndex:SetText( MI_TXT_CUR_TARGET..MI_White..MI2_Target.mobIndex )
-	else
-		MI2_OptClearTarget:Disable()
-		MI2_TxtTargetIndex:SetText( MI_TXT_CUR_TARGET..MI_White.."---" )
-	end
+  -- update mob index display and state of "clear mob" button
+  if MI2_Target.mobIndex and MobInfoDB[MI2_Target.mobIndex] then
+    MI2_OptClearTarget:Enable()
+    MI2_TxtTargetIndex:SetText( MI_TXT_CUR_TARGET..MI_White..MI2_Target.mobIndex )
+  else
+    MI2_OptClearTarget:Disable()
+    MI2_TxtTargetIndex:SetText( MI_TXT_CUR_TARGET..MI_White.."---" )
+  end
 
-	-- update import status
-	if MI2_Import_Status then
-		if MobInfoConfig.ImportSignature == MI2_Import_Signature then
-			MI2_OptImportMobData:Disable()
-			MI2_TxtImportStatus:SetText( "Status: <data already imported ("..MI2_Import_Status..")>" )
-		elseif MI2_Import_Status == "BADVER" then
-			MI2_OptImportMobData:Disable()
-			MI2_TxtImportStatus:SetText( "Status: <import database too old for import>" )
-		elseif MI2_Import_Status == "BADLOC" then
-			MI2_OptImportMobData:Disable()
-			MI2_TxtImportStatus:SetText( "Status: <import database has wrong language (locale)>" )
-		else
-			MI2_OptImportMobData:Enable()
-			MI2_TxtImportStatus:SetText( "Status: "..MI2_Import_Status.." available for import" )
-		end
-	else
-		MI2_OptImportMobData:Disable()
-		MI2_TxtImportStatus:SetText( "Status: <no import data>" )
-	end
-end  -- MI2_DbOptionsFrameOnShow()
+  -- update import status
+  if MI2_Import_Status then
+    if MobInfoConfig.ImportSignature == MI2_Import_Signature then
+      MI2_OptImportMobData:Disable()
+      MI2_TxtImportStatus:SetText( "Status: <data already imported ("..MI2_Import_Status..")>" )
+    elseif MI2_Import_Status == "BADVER" then
+      MI2_OptImportMobData:Disable()
+      MI2_TxtImportStatus:SetText( "Status: <import database too old for import>" )
+    elseif MI2_Import_Status == "BADLOC" then
+      MI2_OptImportMobData:Disable()
+      MI2_TxtImportStatus:SetText( "Status: <import database has wrong language (locale)>" )
+    else
+      MI2_OptImportMobData:Enable()
+      MI2_TxtImportStatus:SetText( "Status: "..MI2_Import_Status.." available for import" )
+    end
+  else
+    MI2_OptImportMobData:Disable()
+    MI2_TxtImportStatus:SetText( "Status: <no import data>" )
+  end
+end -- MI2_DbOptionsFrameOnShow()
 

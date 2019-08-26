@@ -12,7 +12,7 @@ MI2_Locale = GetLocale()
 if ( MI2_Locale == "frFR" ) then
 
 MI2_SpellSchools = { Arcanes="ar", Feu="fi", Givre="fr", Ombre="sh", ["Sacr\195\169"]="ho", Nature="na",
-					 arcanes="ar", feu="fi", givre="fr", ombre="sh", ["sacr\195\169"]="ho", nature="na" }
+           arcanes="ar", feu="fi", givre="fr", ombre="sh", ["sacr\195\169"]="ho", nature="na" }
 
 MI_TXT_WELCOME = "Bienvenue dans MobInfo"
 MI_DESCRIPTION = "Ajoute une pr\195\169cision d\'information sur un monstre dans la Tooltip";
@@ -320,7 +320,7 @@ choice1 = "Gris & Plus"; choice2="Blanc & Plus"; choice3="Vert & Plus" }
 
 MI2_OPTIONS["MI2_OptTrimDownMobData"] = 
 { text = "R\195\169duire la taille: Database Mob"; help = "R\195\169duit la taille de la Base de donn\195\169es sur les monstres par suppression du surplus de donn\195\169es.";
-	  info = "Les donn\195\169es en surplus sont toutes les donn\195\169es dans la base de donn\195\169es qui ne sont pas marqu\195\169es comme \195\169tant enregistr\195\169es."; }
+    info = "Les donn\195\169es en surplus sont toutes les donn\195\169es dans la base de donn\195\169es qui ne sont pas marqu\195\169es comme \195\169tant enregistr\195\169es."; }
 
 MI2_OPTIONS["MI2_OptImportMobData"] = 
 { text = "Start the Import"; help = "Import an external Mob Database into your own Mob Database";

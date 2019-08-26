@@ -24,10 +24,10 @@ local MI2_HpPctList, MI2_HpDmg, MI2_HpData
 -- MI2_HpDecode()
 --
 function MI2_HpDecode( hpData )
-	local _,_, pts, pct = string.find(hpData, "^(%d+)/(%d+)$")
-	pts = tonumber( pts )
-	pct = tonumber( pct )
-	return pts, pct
+  local _,_, pts, pct = string.find(hpData, "^(%d+)/(%d+)$")
+  pts = tonumber( pts )
+  pct = tonumber( pct )
+  return pts, pct
 end  -- MI2_HpDecode()
 
 
@@ -48,7 +48,7 @@ end  -- MI2_HpDecode()
 --	 end
 --
 function MobHealth_GetTargetCurHP()
-	return MI2_Target.curHealth
+  return MI2_Target.curHealth
 end	 --	of MobHealth_GetTargetCurHP()
 
 
@@ -65,7 +65,7 @@ end	 --	of MobHealth_GetTargetCurHP()
 --	 end
 --
 function MobHealth_GetTargetMaxHP()
-	return MI2_Target.maxHealth
+  return MI2_Target.maxHealth
 end	 --	of MobHealth_GetTargetMaxHP()
 
 
@@ -88,28 +88,28 @@ end	 --	of MobHealth_GetTargetMaxHP()
 --	  local	maxHealth =	floor(	100	* ppp +	0.5)
 --
 function MobHealth_PPP( index )
-	if	index and MobHealthDB[index]  then
-		local pts, pct = MI2_HpDecode( MobHealthDB[index] )
-		if pts and pct and pct ~= 0 then
-			return pts / pct
-		end
-	end
-	return 0
+  if	index and MobHealthDB[index]  then
+    local pts, pct = MI2_HpDecode( MobHealthDB[index] )
+    if pts and pct and pct ~= 0 then
+      return pts / pct
+    end
+  end
+  return 0
 end
 
 function MI2_GetHealth_PPP( index )
-	if	index then
-		local pts, pct
-		if MobHealthDB[index]  then
-			pts, pct = MI2_HpDecode( MobHealthDB[index] )
-		elseif MobHealthPlayerDB[index]  then
-			pts, pct = MI2_HpDecode( MobHealthPlayerDB[index] )
-		end
-		if pts and pct and pct ~= 0 then
-			return pts / pct
-		end
-	end
-	return 0
+  if	index then
+    local pts, pct
+    if MobHealthDB[index]  then
+      pts, pct = MI2_HpDecode( MobHealthDB[index] )
+    elseif MobHealthPlayerDB[index]  then
+      pts, pct = MI2_HpDecode( MobHealthPlayerDB[index] )
+    end
+    if pts and pct and pct ~= 0 then
+      return pts / pct
+    end
+  end
+  return 0
 end
 
 
@@ -121,24 +121,24 @@ end
 -- MI2_HpGet()
 --
 local function MI2_HpGet( database, index )
-	if not database[index] then return nil,0 end
+  if not database[index] then return nil,0 end
 
-	local pts, pct = MI2_HpDecode( database[index] )
+  local pts, pct = MI2_HpDecode( database[index] )
 
-	local quality
-	if pct == 200 then
-	    quality = 3
-	    pts = pts / 2
-	elseif pct == 100 then
-	    quality = 2
-	elseif pct and pts then
-	    quality = 1
-	    pts = floor(pts * 100 / pct + 0.5)
-	else
-		return nil,0
-	end
+  local quality
+  if pct == 200 then
+      quality = 3
+      pts = pts / 2
+  elseif pct == 100 then
+      quality = 2
+  elseif pct and pts then
+      quality = 1
+      pts = floor(pts * 100 / pct + 0.5)
+  else
+    return nil,0
+  end
 
-	return pts, quality
+  return pts, quality
 end  -- MI2_HpGet()
 
 
@@ -146,20 +146,20 @@ end  -- MI2_HpGet()
 -- MI2_HpSet()
 --
 local function MI2_HpSet( database, index, hpMax, quality )
-	local pct, pts
-	hpMax = floor(hpMax + 0.51)
-	if quality == 3 then
-		pct = 200
-		pts = hpMax * 2
-	elseif quality == 2 then
-		pct = 100
-		pts = hpMax
-	else
-		pct = 50
-		pts = floor(hpMax / 2 + 0.51)
-	end
+  local pct, pts
+  hpMax = floor(hpMax + 0.51)
+  if quality == 3 then
+    pct = 200
+    pts = hpMax * 2
+  elseif quality == 2 then
+    pct = 100
+    pts = hpMax
+  else
+    pct = 50
+    pts = floor(hpMax / 2 + 0.51)
+  end
 --midebug( "writing HP to DB: new=["..pts.."/"..pct.."], old=["..(database[index] or "nil").."], hpm="..hpMax..", q="..quality, 1 )
-	database[index] = pts.."/"..pct
+  database[index] = pts.."/"..pct
 end  -- MI2_HpSet()
 
 
@@ -170,27 +170,27 @@ end  -- MI2_HpSet()
 -- has changed.
 --
 function MI2_HpSetNewTarget()
-	MI2_Target.unitHealth = UnitHealth("target")
-	MI2_HpData = { totalDmg=0, newQuality=0 }
-	if MI2_Target.unitHealth > 0 and MI2_Target.healthDB then
-		MI2_HpDmg = {}
-		MI2_HpPctList = {}
+  MI2_Target.unitHealth = UnitHealth("target")
+  MI2_HpData = { totalDmg=0, newQuality=0 }
+  if MI2_Target.unitHealth > 0 and MI2_Target.healthDB then
+    MI2_HpDmg = {}
+    MI2_HpPctList = {}
 
-		-- read max hp from database
-		MI2_HpData.dbMax, MI2_HpData.dbQuality = MI2_HpGet( MI2_Target.healthDB, MI2_Target.index )
+    -- read max hp from database
+    MI2_HpData.dbMax, MI2_HpData.dbQuality = MI2_HpGet( MI2_Target.healthDB, MI2_Target.index )
 
-		-- initialise health calculation and show health in target frame
-		MI2_Target.showHealth = 1
-		if MI2_Target.unitHealth == 100 then
-			tinsert( MI2_HpPctList, {100,0} )
-			MI2_HpData.newQuality = 2
-		else
-			MI2_HpData.newQuality = 1
-		end
-		MI2_RecordTargetHealth( MI2_Target.unitHealth )
-	else
-		MobHealth_Display()
-	end
+    -- initialise health calculation and show health in target frame
+    MI2_Target.showHealth = 1
+    if MI2_Target.unitHealth == 100 then
+      tinsert( MI2_HpPctList, {100,0} )
+      MI2_HpData.newQuality = 2
+    else
+      MI2_HpData.newQuality = 1
+    end
+    MI2_RecordTargetHealth( MI2_Target.unitHealth )
+  else
+    MobHealth_Display()
+  end
 end -- MI2_HpSetNewTarget()
 
 
@@ -200,46 +200,46 @@ end -- MI2_HpSetNewTarget()
 -- display the values and percentage for health	/ mana in target frame
 --
 function MobHealth_Display( )
-	-- nothing to do if showing is disabled
-	if MobInfoConfig.ShowTargetInfo ~= 1 then return end
+  -- nothing to do if showing is disabled
+  if MobInfoConfig.ShowTargetInfo ~= 1 then return end
 
-	-- create health and percent text if showing is enabled
-	local healthText, manaText
-	if  MobInfoConfig.TargetHealth == 1 and MI2_Target.maxHealth then
-	    if MI2_HpData.dbQuality == 3 then
-			healthText = string.format("%.f // %.f", MI2_Target.curHealth, MI2_Target.maxHealth )
-		else
-			healthText = string.format("%.f / %.f", MI2_Target.curHealth, MI2_Target.maxHealth )
-		end
-	end
+  -- create health and percent text if showing is enabled
+  local healthText, manaText
+  if  MobInfoConfig.TargetHealth == 1 and MI2_Target.maxHealth then
+      if MI2_HpData.dbQuality == 3 then
+      healthText = string.format("%.f // %.f", MI2_Target.curHealth, MI2_Target.maxHealth )
+    else
+      healthText = string.format("%.f / %.f", MI2_Target.curHealth, MI2_Target.maxHealth )
+    end
+  end
 
-	local health = MI2_Target.unitHealth or 0
-	if	MobInfoConfig.HealthPercent	== 1 and health > 0 then
-		if healthText then
-			healthText = healthText..string.format(" (%d%%)", health )
-		else
-			healthText = string.format("%d%%", health )
-		end
-	end
+  local health = MI2_Target.unitHealth or 0
+  if	MobInfoConfig.HealthPercent	== 1 and health > 0 then
+    if healthText then
+      healthText = healthText..string.format(" (%d%%)", health )
+    else
+      healthText = string.format("%d%%", health )
+    end
+  end
 
-	-- create mana text based on mana show flags
-	local maxmana =	UnitManaMax("target")
-	if maxmana > 0 then
-		local mana = UnitMana("target")
-		if MobInfoConfig.TargetMana == 1 then
-			manaText = string.format("%.f / %.f", mana, maxmana )
-		end
-		if MobInfoConfig.ManaPercent == 1 then
-			if manaText then
-				manaText = manaText..string.format(" (%d%%)", floor(100.0 * mana / maxmana))
-			else
-				manaText = string.format("%d%%", floor(100.0 * mana / maxmana))
-			end
-		end
-	end
+  -- create mana text based on mana show flags
+  local maxmana =	UnitManaMax("target")
+  if maxmana > 0 then
+    local mana = UnitMana("target")
+    if MobInfoConfig.TargetMana == 1 then
+      manaText = string.format("%.f / %.f", mana, maxmana )
+    end
+    if MobInfoConfig.ManaPercent == 1 then
+      if manaText then
+        manaText = manaText..string.format(" (%d%%)", floor(100.0 * mana / maxmana))
+      else
+        manaText = string.format("%d%%", floor(100.0 * mana / maxmana))
+      end
+    end
+  end
 
-	MI2_MobHealthText:SetText( healthText or "" )
-	MI2_MobManaText:SetText( manaText or "" )
+  MI2_MobHealthText:SetText( healthText or "" )
+  MI2_MobManaText:SetText( manaText or "" )
 end	 --	MobHealth_Display()
 
 
@@ -249,25 +249,25 @@ end	 --	MobHealth_Display()
 -- set new font	for	display	of health /	mana in	target frame
 --
 local function MI2_MobHealth_SetFont( fontId, fontSize )
-	local fontName
+  local fontName
 
-	if fontId ~= lOldFontId or fontSize ~= lOldFontSize then
-		lOldFontId = fontId
-		lOldFontSize = fontSize
+  if fontId ~= lOldFontId or fontSize ~= lOldFontSize then
+    lOldFontId = fontId
+    lOldFontSize = fontSize
 
-		-- select font name	to use
-		if	fontId == 1	 then
-			fontName = "Fonts\\ARIALN.TTF"  -- NumberFontNormal
-		elseif	fontId == 2	 then
-			fontName = "Fonts\\FRIZQT__.TTF"	 --	GameFontNormal
-		else
-			fontName = "Fonts\\MORPHEUS.TTF"	 --	ItemTextFontNormal
-		end
+    -- select font name	to use
+    if	fontId == 1	 then
+      fontName = "Fonts\\ARIALN.TTF"  -- NumberFontNormal
+    elseif	fontId == 2	 then
+      fontName = "Fonts\\FRIZQT__.TTF"	 --	GameFontNormal
+    else
+      fontName = "Fonts\\MORPHEUS.TTF"	 --	ItemTextFontNormal
+    end
 
-		-- set font	for	health and mana	text
-		MI2_MobHealthText:SetFont( fontName, fontSize )
-		MI2_MobManaText:SetFont( fontName, fontSize )
-	end
+    -- set font	for	health and mana	text
+    MI2_MobHealthText:SetFont( fontName, fontSize )
+    MI2_MobManaText:SetFont( fontName, fontSize )
+  end
 
 end	 --	of MI2_MobHealth_SetFont()
 
@@ -278,24 +278,24 @@ end	 --	of MI2_MobHealth_SetFont()
 -- set position	and	font for mob health/mana texts
 --
 function MI2_MobHealth_SetPos( )
-	local font
+  local font
 
-	-- set poition for health	and	mana text
-	MI2_MobHealthText:SetPoint( "TOP", "TargetFrameHealthBar", "BOTTOM", MobInfoConfig.HealthPosX, MobInfoConfig.HealthPosY )
-	MI2_MobManaText:SetPoint( "TOP", "TargetFrameManaBar", "BOTTOM", MobInfoConfig.ManaPosX, MobInfoConfig.ManaPosY )
+  -- set poition for health	and	mana text
+  MI2_MobHealthText:SetPoint( "TOP", "TargetFrameHealthBar", "BOTTOM", MobInfoConfig.HealthPosX, MobInfoConfig.HealthPosY )
+  MI2_MobManaText:SetPoint( "TOP", "TargetFrameManaBar", "BOTTOM", MobInfoConfig.ManaPosX, MobInfoConfig.ManaPosY )
 
-	-- update	font ID	and	font size
-	MI2_MobHealth_SetFont( MobInfoConfig.TargetFont, MobInfoConfig.TargetFontSize )
+  -- update	font ID	and	font size
+  MI2_MobHealth_SetFont( MobInfoConfig.TargetFont, MobInfoConfig.TargetFontSize )
 
-	-- update visibility of target frame info
-	if MobInfoConfig.ShowTargetInfo == 1 and MobInfoConfig.DisableHealth ~= 2 then
-		MI2_MobHealthFrame:Show()
-	else
-		MI2_MobHealthFrame:Hide()
-	end
+  -- update visibility of target frame info
+  if MobInfoConfig.ShowTargetInfo == 1 and MobInfoConfig.DisableHealth ~= 2 then
+    MI2_MobHealthFrame:Show()
+  else
+    MI2_MobHealthFrame:Hide()
+  end
 
-	-- redisplay health / mana values
-	MobHealth_Display()
+  -- redisplay health / mana values
+  MobHealth_Display()
 end	 --	of MI2_MobHealth_SetPos()
 
 
@@ -303,9 +303,9 @@ end	 --	of MI2_MobHealth_SetPos()
 -- MI2_MobHealth_Reset()
 --
 function MI2_MobHealth_Reset()
-	MI2_MobHealth_ClearTargetData()
-	MobHealthDB	= {}
-	MobHealthPlayerDB =	{}
+  MI2_MobHealth_ClearTargetData()
+  MobHealthDB	= {}
+  MobHealthPlayerDB =	{}
 end
 
 
@@ -315,24 +315,24 @@ end
 -- Save health data for current target in health database
 --
 function MI2_SaveTargetHealthData( updateOnly )
-	-- nothing to do if there is no health data
-	if MI2_HpData == nil then return end
-	
+  -- nothing to do if there is no health data
+  if MI2_HpData == nil then return end
+  
     local newHpMax = MI2_HpData.newMax
     local newQuality = MI2_HpData.newQuality
 
-	if newHpMax and newQuality and newQuality >= MI2_HpData.dbQuality then
-	    if MI2_HpData.pct and MI2_HpData.pct < 10 then newQuality = 1 end
-		if newQuality == MI2_HpData.dbQuality and newQuality < 3 then
-		    local delta = newHpMax / 100 + 1
-		    if MI2_HpData.dbQuality == 1 or abs(MI2_HpData.dbMax - newHpMax) > delta then
-				newHpMax = (MI2_HpData.dbMax + newHpMax) / 2
-			else
-   			    newHpMax = max(MI2_HpData.dbMax, newHpMax)
-			end
-		end
-		MI2_HpSet( MI2_Target.healthDB, MI2_Target.index, newHpMax, newQuality )
-	end
+  if newHpMax and newQuality and newQuality >= MI2_HpData.dbQuality then
+      if MI2_HpData.pct and MI2_HpData.pct < 10 then newQuality = 1 end
+    if newQuality == MI2_HpData.dbQuality and newQuality < 3 then
+        local delta = newHpMax / 100 + 1
+        if MI2_HpData.dbQuality == 1 or abs(MI2_HpData.dbMax - newHpMax) > delta then
+        newHpMax = (MI2_HpData.dbMax + newHpMax) / 2
+      else
+             newHpMax = max(MI2_HpData.dbMax, newHpMax)
+      end
+    end
+    MI2_HpSet( MI2_Target.healthDB, MI2_Target.index, newHpMax, newQuality )
+  end
 end -- MI2_SaveTargetHealthData()
 
 
@@ -342,12 +342,12 @@ end -- MI2_SaveTargetHealthData()
 -- Clear mob health data for current target
 --
 function MI2_MobHealth_ClearTargetData()
-	if MI2_Target.index then
-		MI2_Target.healthDB[MI2_Target.index] = nil
-		MI2_Target = {}
-		MobHealth_Display()
-		MI2_HpData = nil
-	end
+  if MI2_Target.index then
+    MI2_Target.healthDB[MI2_Target.index] = nil
+    MI2_Target = {}
+    MobHealth_Display()
+    MI2_HpData = nil
+  end
 end  -- MI2_MobHealth_ClearTargetData()
 
 
@@ -358,52 +358,52 @@ end  -- MI2_MobHealth_ClearTargetData()
 -- a Mobs maximum health points.
 --
 local function MI2_CalculateHp()
-	local numDmg = getn( MI2_HpDmg )
-	local numPct = getn( MI2_HpPctList )
-	if numPct < 2 or numDmg < 2 then return end
+  local numDmg = getn( MI2_HpDmg )
+  local numPct = getn( MI2_HpPctList )
+  if numPct < 2 or numDmg < 2 then return end
 
-	local firstPct = MI2_HpPctList[1][1]
-	local lastPct = MI2_HpPctList[numPct][1]
-	local deltaPct = firstPct - lastPct
-	local dmg1 = MI2_HpDmg[MI2_HpPctList[numPct][2]]
-	local dmg2 = (MI2_HpDmg[MI2_HpPctList[numPct][2]+1] or dmg1)
-	local hpm1 = dmg1 * 100 / deltaPct
-	local hpm2 = dmg2 * 100 / deltaPct
-	MI2_HpData.pct = deltaPct
+  local firstPct = MI2_HpPctList[1][1]
+  local lastPct = MI2_HpPctList[numPct][1]
+  local deltaPct = firstPct - lastPct
+  local dmg1 = MI2_HpDmg[MI2_HpPctList[numPct][2]]
+  local dmg2 = (MI2_HpDmg[MI2_HpPctList[numPct][2]+1] or dmg1)
+  local hpm1 = dmg1 * 100 / deltaPct
+  local hpm2 = dmg2 * 100 / deltaPct
+  MI2_HpData.pct = deltaPct
 
-	local hpm1Count = 0
-	local hpm2Count = 0
-	local hpm1Delta = (hpm1 / 50) + 1
-	local hpm2Delta = (hpm2 / 50) + 1
-	for i=2,(numPct-1) do
-		local dmg = MI2_HpDmg[MI2_HpPctList[i][2]]
-		if dmg then
-			local pct = MI2_HpPctList[i][1]
-			local hpm = dmg * 100 / (firstPct - pct)
-			if abs(hpm-hpm1) < hpm1Delta then hpm1Count = hpm1Count + 1 end
-			if abs(hpm-hpm2) < hpm2Delta then hpm2Count = hpm2Count + 1 end
-		end
-	end
+  local hpm1Count = 0
+  local hpm2Count = 0
+  local hpm1Delta = (hpm1 / 50) + 1
+  local hpm2Delta = (hpm2 / 50) + 1
+  for i=2,(numPct-1) do
+    local dmg = MI2_HpDmg[MI2_HpPctList[i][2]]
+    if dmg then
+      local pct = MI2_HpPctList[i][1]
+      local hpm = dmg * 100 / (firstPct - pct)
+      if abs(hpm-hpm1) < hpm1Delta then hpm1Count = hpm1Count + 1 end
+      if abs(hpm-hpm2) < hpm2Delta then hpm2Count = hpm2Count + 1 end
+    end
+  end
 
-	local hpm, hpmCount, hpmDelta
-	if hpm2Count > hpm1Count then
-		hpm = hpm2
-		hpmCount = hpm2Count
-		hpmDelta = hpm2Delta
- 	else
-		hpm = hpm1
-		hpmCount = hpm1Count
-		hpmDelta = hpm1Delta
+  local hpm, hpmCount, hpmDelta
+  if hpm2Count > hpm1Count then
+    hpm = hpm2
+    hpmCount = hpm2Count
+    hpmDelta = hpm2Delta
+   else
+    hpm = hpm1
+    hpmCount = hpm1Count
+    hpmDelta = hpm1Delta
     end
 
     if not MI2_HpData.maxCount or hpmCount >= MI2_HpData.maxCount then
         MI2_HpData.maxCount = hpmCount
-		if MI2_HpData.newMax and abs(hpm-MI2_HpData.newMax) < hpmDelta then
-			MI2_HpData.newMax = max( hpm, MI2_HpData.newMax )
-		else
-			MI2_HpData.newMax = hpm
-		end
-	end
+    if MI2_HpData.newMax and abs(hpm-MI2_HpData.newMax) < hpmDelta then
+      MI2_HpData.newMax = max( hpm, MI2_HpData.newMax )
+    else
+      MI2_HpData.newMax = hpm
+    end
+  end
 end --MI2_CalculateHp()
 
 
@@ -411,18 +411,18 @@ end --MI2_CalculateHp()
 -- MI2_RecordTargetCombat()
 --
 function MI2_RecordTargetCombat( damage, isHeal )
-	if isHeal then
-		MI2_HpData.totalDmg = max( (MI2_HpData.totalDmg-damage), 0 )
-	else
-		MI2_HpData.totalDmg = MI2_HpData.totalDmg + damage
-	end
-	if MI2_HpData.totalDmg > 0 then
-		tinsert( MI2_HpDmg, MI2_HpData.totalDmg )
-		if MI2_HpData.pctAdded then
-			MI2_CalculateHp()
-			MI2_HpData.pctAdded = nil
-		end
-	end
+  if isHeal then
+    MI2_HpData.totalDmg = max( (MI2_HpData.totalDmg-damage), 0 )
+  else
+    MI2_HpData.totalDmg = MI2_HpData.totalDmg + damage
+  end
+  if MI2_HpData.totalDmg > 0 then
+    tinsert( MI2_HpDmg, MI2_HpData.totalDmg )
+    if MI2_HpData.pctAdded then
+      MI2_CalculateHp()
+      MI2_HpData.pctAdded = nil
+    end
+  end
 end
 
 
@@ -430,35 +430,35 @@ end
 -- MI2_RecordTargetHealth()
 --
 function MI2_RecordTargetHealth( health )
-	if not MI2_HpData.dbQuality then return end -- can happen when there is no healthDB
+  if not MI2_HpData.dbQuality then return end -- can happen when there is no healthDB
 
-	MI2_Target.unitHealth = UnitHealth("target")
+  MI2_Target.unitHealth = UnitHealth("target")
 
-	-- check if BeastLore effect is active or not
-	local unitHpMax = UnitHealthMax("target")
-	if unitHpMax ~= 100 then
-		MI2_HpData.newMax = unitHpMax
-		MI2_HpData.newQuality = 3
-		MI2_HpData.pctAdded = nil
-		MI2_Target.unitHealth = floor(100.0 * health / MI2_HpData.newMax + 0.5)
-		MI2_Target.curHealth = health
-		MI2_Target.maxHealth = unitHpMax
-	else
-		if MI2_HpData.newQuality < 3 and health > 1 and health < 100 then
-			tinsert( MI2_HpPctList, {health,getn(MI2_HpDmg)} )
-			MI2_HpData.pctAdded = true
-		end
-		local hpMax = (MI2_HpData.newMax or MI2_HpData.dbMax)
-		if hpMax then
-			if MI2_HpData.dbQuality < 2 or not MI2_Target.maxHealth then
-				MI2_Target.maxHealth = floor(hpMax + 0.5)
-				if MI2_HpData.dbQuality < 1 then
-				    MI2_SaveTargetHealthData( true )
-				end
-			end
-			MI2_Target.curHealth = floor((MI2_Target.maxHealth * health) / 100 + 0.5)
-		end
-	end
+  -- check if BeastLore effect is active or not
+  local unitHpMax = UnitHealthMax("target")
+  if unitHpMax ~= 100 then
+    MI2_HpData.newMax = unitHpMax
+    MI2_HpData.newQuality = 3
+    MI2_HpData.pctAdded = nil
+    MI2_Target.unitHealth = floor(100.0 * health / MI2_HpData.newMax + 0.5)
+    MI2_Target.curHealth = health
+    MI2_Target.maxHealth = unitHpMax
+  else
+    if MI2_HpData.newQuality < 3 and health > 1 and health < 100 then
+      tinsert( MI2_HpPctList, {health,getn(MI2_HpDmg)} )
+      MI2_HpData.pctAdded = true
+    end
+    local hpMax = (MI2_HpData.newMax or MI2_HpData.dbMax)
+    if hpMax then
+      if MI2_HpData.dbQuality < 2 or not MI2_Target.maxHealth then
+        MI2_Target.maxHealth = floor(hpMax + 0.5)
+        if MI2_HpData.dbQuality < 1 then
+            MI2_SaveTargetHealthData( true )
+        end
+      end
+      MI2_Target.curHealth = floor((MI2_Target.maxHealth * health) / 100 + 0.5)
+    end
+  end
 
-	MobHealth_Display()
+  MobHealth_Display()
 end

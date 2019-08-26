@@ -12,10 +12,10 @@ local MI2_DeleteMode = ""
 
 -- defaults for all MobInfo config options
 local MI2_TTDefaults = {
-	ShowHealth=1, ShowMana=0, ShowXp=1, ShowNo2lev=1, ShowKills=0, ShowLoots=1, ShowTotal=1, 
-	ShowCoin=0, ShowIV=0, ShowEmpty=0, ShowLowHpAction=1, ShowCloth=1, ShowDamage=1,
-	ShowDps=1, ShowLocation=1, ShowQuality=1, ShowResists=1, ShowImmuns=1, ShowItems=1,
-	ShowClothSkin=1, ShowIGrey=0, ShowIWhite=1, ShowIGreen=1, ShowIBlue=1, ShowIPurple=1 } 
+  ShowHealth=1, ShowMana=0, ShowXp=1, ShowNo2lev=1, ShowKills=0, ShowLoots=1, ShowTotal=1, 
+  ShowCoin=0, ShowIV=0, ShowEmpty=0, ShowLowHpAction=1, ShowCloth=1, ShowDamage=1,
+  ShowDps=1, ShowLocation=1, ShowQuality=1, ShowResists=1, ShowImmuns=1, ShowItems=1,
+  ShowClothSkin=1, ShowIGrey=0, ShowIWhite=1, ShowIGreen=1, ShowIBlue=1, ShowIPurple=1 } 
 
 
 -----------------------------------------------------------------------------
@@ -24,10 +24,10 @@ local MI2_TTDefaults = {
 -- Default tooltip content settings
 --
 function MI2_SlashAction_Default()
-	local idx, def
-	for idx,def in pairs(MI2_TTDefaults) do
-		MobInfoConfig[idx] = def
-	end
+  local idx, def
+  for idx,def in pairs(MI2_TTDefaults) do
+    MobInfoConfig[idx] = def
+  end
 end -- MI2_SlashAction_Default
 
 
@@ -37,10 +37,10 @@ end -- MI2_SlashAction_Default
 -- Show all tooltip content
 --
 function MI2_SlashAction_AllOn()
-	local idx,def
-	for idx,def in pairs(MI2_TTDefaults) do
-		MobInfoConfig[idx] = 1
-	end
+  local idx,def
+  for idx,def in pairs(MI2_TTDefaults) do
+    MobInfoConfig[idx] = 1
+  end
 end -- MI2_SlashAction_AllOn
 
 
@@ -50,10 +50,10 @@ end -- MI2_SlashAction_AllOn
 -- Show no extra info in tooltip
 --
 function MI2_SlashAction_AllOff()
-	local idx,def
-	for idx,def in pairs(MI2_TTDefaults) do
-		MobInfoConfig[idx] = 0
-	end
+  local idx,def
+  for idx,def in pairs(MI2_TTDefaults) do
+    MobInfoConfig[idx] = 0
+  end
 end -- MI2_SlashAction_AllOff
 
 
@@ -70,67 +70,67 @@ end -- MI2_SlashAction_AllOff
 --
 function MI2_RegisterWithAddonManagers(self)
 
-	-- register with myAddons manager
-	if ( myAddOnsFrame_Register ) then
-		local mobInfo2Details = {
-		name = "MobInfo",
-		version = miVersionNo,
-		author = "Skeeve & Dizzarian",
-		website = "http://www.dizzarian.com/forums/viewforum.php?f=16",
-		category = MYADDONS_CATEGORY_OTHERS,
-		optionsframe = "MI2_OptionsFrame"
-		}
-		myAddOnsFrame_Register( mobInfo2Details )
-	end
+  -- register with myAddons manager
+  if ( myAddOnsFrame_Register ) then
+    local mobInfo2Details = {
+    name = "MobInfo",
+    version = miVersionNo,
+    author = "Skeeve & Dizzarian",
+    website = "http://www.dizzarian.com/forums/viewforum.php?f=16",
+    category = MYADDONS_CATEGORY_OTHERS,
+    optionsframe = "MI2_OptionsFrame"
+    }
+    myAddOnsFrame_Register( mobInfo2Details )
+  end
 
-	-- register with EARTH manager (mainly for Cosmos support)
-	if EarthFeature_AddButton then
-		EarthFeature_AddButton(
-			{
-				id = "MobInfo",
-				name = "MobInfo",
-				subtext = "v"..miVersionNo,
-				tooltip = MI_DESCRIPTION,
-				icon = "Interface\\CharacterFrame\\TemporaryPortrait-Monster",
-				callback = function(state) MI2_SlashParse("", self) end
-			}
-		)
-		if not MobInfoConfig.ShowMMButton then MobInfoConfig.ShowMMButton = 0 end
+  -- register with EARTH manager (mainly for Cosmos support)
+  if EarthFeature_AddButton then
+    EarthFeature_AddButton(
+      {
+        id = "MobInfo",
+        name = "MobInfo",
+        subtext = "v"..miVersionNo,
+        tooltip = MI_DESCRIPTION,
+        icon = "Interface\\CharacterFrame\\TemporaryPortrait-Monster",
+        callback = function(state) MI2_SlashParse("", self) end
+      }
+    )
+    if not MobInfoConfig.ShowMMButton then MobInfoConfig.ShowMMButton = 0 end
 
-	-- register with KHAOS (only if EARTH not found)
-	elseif Khaos then
-		Khaos.registerOptionSet(
-			"tooltip",
-			{
-				id = "MobInfoOptionSet",
-				text = "MobInfo",
-				helptext = MI_DESCRIPTION,
-				difficulty = 1,
-				callback = function(state) end,
-				default = true,
-				options = {
-					{
-						id = "MobInfoOptionsHeader",
-						type = K_HEADER,
-						difficulty = 1,
-						text = MI_TXT_WELCOME,
-						helptext = MI_DESCRIPTION
-					},
-					{
-						id = "MobInfoOptionsButton",
-						type = K_BUTTON,
-						difficulty = 1,
-						text = "MobInfo",
-						helptext = "",
-						callback = function(state) MI2_SlashParse("", self) end,
-						feedback = function(state) end,
-						setup = { buttonText = MI_TXT_OPEN }
-					}
-				}
-			}
-		)
-		if not MobInfoConfig.ShowMMButton then MobInfoConfig.ShowMMButton = 0 end
-	end
+  -- register with KHAOS (only if EARTH not found)
+  elseif Khaos then
+    Khaos.registerOptionSet(
+      "tooltip",
+      {
+        id = "MobInfoOptionSet",
+        text = "MobInfo",
+        helptext = MI_DESCRIPTION,
+        difficulty = 1,
+        callback = function(state) end,
+        default = true,
+        options = {
+          {
+            id = "MobInfoOptionsHeader",
+            type = K_HEADER,
+            difficulty = 1,
+            text = MI_TXT_WELCOME,
+            helptext = MI_DESCRIPTION
+          },
+          {
+            id = "MobInfoOptionsButton",
+            type = K_BUTTON,
+            difficulty = 1,
+            text = "MobInfo",
+            helptext = "",
+            callback = function(state) MI2_SlashParse("", self) end,
+            feedback = function(state) end,
+            setup = { buttonText = MI_TXT_OPEN }
+          }
+        }
+      }
+    )
+    if not MobInfoConfig.ShowMMButton then MobInfoConfig.ShowMMButton = 0 end
+  end
 end  -- MI2_RegisterWithAddonManagers()
 
 
@@ -140,15 +140,15 @@ end  -- MI2_RegisterWithAddonManagers()
 -- Clear MobInfo and MobHealth data for current target.
 --
 function MI2_SlashAction_ClearTarget()
-	local index = MI2_Target.mobIndex
-	if index then
-		MI2_MobHealth_ClearTargetData()
-		MI2_DeleteMobData( index )
-		MI2_Target = {}
-		MI2_OnTargetChanged()
-		MI2_DbOptionsFrameOnShow()
-		chattext( "data for target "..MI_Green..index..MI_White.." has been deleted" )
-	end
+  local index = MI2_Target.mobIndex
+  if index then
+    MI2_MobHealth_ClearTargetData()
+    MI2_DeleteMobData( index )
+    MI2_Target = {}
+    MI2_OnTargetChanged()
+    MI2_DbOptionsFrameOnShow()
+    chattext( "data for target "..MI_Green..index..MI_White.." has been deleted" )
+  end
 end  -- MI2_SlashAction_ClearTarget()
 
 
@@ -159,21 +159,21 @@ end  -- MI2_SlashAction_ClearTarget()
 -- confirmed by user.
 --
 local function MI2_Slash_ClearDbConfirmed()
-	if MI2_DeleteMode == "MobDb" then
-		local curZoneName = MI2_ZoneTable[MI2_CurZone]
-		MI2_DeleteAllMobData()
-		MI2_ZoneTable[MI2_CurZone] = curZoneName
-		MobInfoConfig.ImportSignature = ""
-	elseif MI2_DeleteMode == "HealthDb" then
-		MI2_MobHealth_Reset()
-	elseif MI2_DeleteMode == "PlayerDb" then
-		MobHealthPlayerDB = {}
-	end
-	chattext( "database deleted: "..MI2_DeleteMode )
-	MI2_Target = {}
-	MI2_OnTargetChanged()
-	MI2_DbOptionsFrameOnShow()
-	collectgarbage( "collect" )
+  if MI2_DeleteMode == "MobDb" then
+    local curZoneName = MI2_ZoneTable[MI2_CurZone]
+    MI2_DeleteAllMobData()
+    MI2_ZoneTable[MI2_CurZone] = curZoneName
+    MobInfoConfig.ImportSignature = ""
+  elseif MI2_DeleteMode == "HealthDb" then
+    MI2_MobHealth_Reset()
+  elseif MI2_DeleteMode == "PlayerDb" then
+    MobHealthPlayerDB = {}
+  end
+  chattext( "database deleted: "..MI2_DeleteMode )
+  MI2_Target = {}
+  MI2_OnTargetChanged()
+  MI2_DbOptionsFrameOnShow()
+  collectgarbage( "collect" )
 end  -- MI2_Slash_ClearDbConfirmed()
 
 
@@ -184,10 +184,10 @@ end  -- MI2_Slash_ClearDbConfirmed()
 -- Ask for confirmation before performing the clear operation.
 --
 function MI2_SlashAction_ClearHealthDb(self)
-	StaticPopupDialogs["MOBINFO_CONFIRMATION"].text = MI_TXT_CLR_ALL_CONFIRM.."'"..MI2_OPTIONS[self:GetName()].help.."' ?"
-	StaticPopupDialogs["MOBINFO_CONFIRMATION"].OnAccept = MI2_Slash_ClearDbConfirmed
-	MI2_DeleteMode = "HealthDb"
-	local dialog = StaticPopup_Show( "MOBINFO_CONFIRMATION", "")
+  StaticPopupDialogs["MOBINFO_CONFIRMATION"].text = MI_TXT_CLR_ALL_CONFIRM.."'"..MI2_OPTIONS[self:GetName()].help.."' ?"
+  StaticPopupDialogs["MOBINFO_CONFIRMATION"].OnAccept = MI2_Slash_ClearDbConfirmed
+  MI2_DeleteMode = "HealthDb"
+  local dialog = StaticPopup_Show( "MOBINFO_CONFIRMATION", "")
 end  -- MI2_SlashAction_ClearHealthDb()
 
 
@@ -198,10 +198,10 @@ end  -- MI2_SlashAction_ClearHealthDb()
 -- Ask for confirmation before performing the clear operation.
 --
 function MI2_SlashAction_ClearPlayerDb(self)
-	StaticPopupDialogs["MOBINFO_CONFIRMATION"].text = MI_TXT_CLR_ALL_CONFIRM.."'"..MI2_OPTIONS[self:GetName()].help.."' ?"
-	StaticPopupDialogs["MOBINFO_CONFIRMATION"].OnAccept = MI2_Slash_ClearDbConfirmed
-	MI2_DeleteMode = "PlayerDb"
-	local dialog = StaticPopup_Show( "MOBINFO_CONFIRMATION", "")
+  StaticPopupDialogs["MOBINFO_CONFIRMATION"].text = MI_TXT_CLR_ALL_CONFIRM.."'"..MI2_OPTIONS[self:GetName()].help.."' ?"
+  StaticPopupDialogs["MOBINFO_CONFIRMATION"].OnAccept = MI2_Slash_ClearDbConfirmed
+  MI2_DeleteMode = "PlayerDb"
+  local dialog = StaticPopup_Show( "MOBINFO_CONFIRMATION", "")
 end  -- MI2_SlashAction_ClearPlayerDb()
 
 
@@ -212,10 +212,10 @@ end  -- MI2_SlashAction_ClearPlayerDb()
 -- Ask for confirmation before performing the clear operation.
 --
 function MI2_SlashAction_ClearMobDb(self)
-	StaticPopupDialogs["MOBINFO_CONFIRMATION"].text = MI_TXT_CLR_ALL_CONFIRM.."'"..MI2_OPTIONS[self:GetName()].help.."' ?"
-	StaticPopupDialogs["MOBINFO_CONFIRMATION"].OnAccept = MI2_Slash_ClearDbConfirmed
-	MI2_DeleteMode = "MobDb"
-	local dialog = StaticPopup_Show( "MOBINFO_CONFIRMATION", "")
+  StaticPopupDialogs["MOBINFO_CONFIRMATION"].text = MI_TXT_CLR_ALL_CONFIRM.."'"..MI2_OPTIONS[self:GetName()].help.."' ?"
+  StaticPopupDialogs["MOBINFO_CONFIRMATION"].OnAccept = MI2_Slash_ClearDbConfirmed
+  MI2_DeleteMode = "MobDb"
+  local dialog = StaticPopup_Show( "MOBINFO_CONFIRMATION", "")
 end  -- MI2_SlashAction_ClearMobDb()
 
 
@@ -227,42 +227,42 @@ end  -- MI2_SlashAction_ClearMobDb()
 -- user confirms the delete confirmation.
 --
 local function MI2_Slash_TrimDownConfirmed()
-	-- loop through database and check each record
-	-- remove all fields within the record where recording of the field is disabled
-	for idx, mobInfo in pairs(MobInfoDB) do
-		if  MobInfoConfig.SaveBasicInfo == 0 then
-			mobInfo.bi = nil
-			mobInfo.ml = nil
-		end
-		if  MobInfoConfig.SaveQualityData == 0 then
-			mobInfo.qi = nil
-		end
-		if  MobInfoConfig.SaveItems == 0 then
-			mobInfo.il = nil
-		end
-		if  MobInfoConfig.SaveResist == 0 then
-			mobInfo.re = nil
-		end
-		if  MobInfoConfig.SaveCharData == 0 then
-			MI2_RemoveCharData( mobInfo )
-		end
-	end
+  -- loop through database and check each record
+  -- remove all fields within the record where recording of the field is disabled
+  for idx, mobInfo in pairs(MobInfoDB) do
+    if  MobInfoConfig.SaveBasicInfo == 0 then
+      mobInfo.bi = nil
+      mobInfo.ml = nil
+    end
+    if  MobInfoConfig.SaveQualityData == 0 then
+      mobInfo.qi = nil
+    end
+    if  MobInfoConfig.SaveItems == 0 then
+      mobInfo.il = nil
+    end
+    if  MobInfoConfig.SaveResist == 0 then
+      mobInfo.re = nil
+    end
+    if  MobInfoConfig.SaveCharData == 0 then
+      MI2_RemoveCharData( mobInfo )
+    end
+  end
 
-	if  MobInfoConfig.SaveItems == 0 then
-		MI2_ItemNameTable = {}
-	end
+  if  MobInfoConfig.SaveItems == 0 then
+    MI2_ItemNameTable = {}
+  end
 
-	-- char table can be deleted when not saving char specific data
-	if  MobInfoConfig.SaveCharData == 0 then
-		MI2_CharTable = { charCount = 0 }
-	end
+  -- char table can be deleted when not saving char specific data
+  if  MobInfoConfig.SaveCharData == 0 then
+    MI2_CharTable = { charCount = 0 }
+  end
 
-	-- force a cleanup after trimming down
-	MI2_ClearMobCache()
-	MI2_CheckAndCleanDatabases()
-	collectgarbage( "collect" )
+  -- force a cleanup after trimming down
+  MI2_ClearMobCache()
+  MI2_CheckAndCleanDatabases()
+  collectgarbage( "collect" )
 
-	MI2_DbOptionsFrameOnShow()
+  MI2_DbOptionsFrameOnShow()
 end -- MI2_Slash_TrimDownConfirmed()
 
 
@@ -274,9 +274,9 @@ end -- MI2_Slash_TrimDownConfirmed()
 -- actually deleting anything.
 --
 function MI2_SlashAction_TrimDownMobData()
-	StaticPopupDialogs["MOBINFO_CONFIRMATION"].text = MI_TXT_TRIM_DOWN_CONFIRM
-	StaticPopupDialogs["MOBINFO_CONFIRMATION"].OnAccept = MI2_Slash_TrimDownConfirmed
-	local dialog = StaticPopup_Show( "MOBINFO_CONFIRMATION", "")
+  StaticPopupDialogs["MOBINFO_CONFIRMATION"].text = MI_TXT_TRIM_DOWN_CONFIRM
+  StaticPopupDialogs["MOBINFO_CONFIRMATION"].OnAccept = MI2_Slash_TrimDownConfirmed
+  local dialog = StaticPopup_Show( "MOBINFO_CONFIRMATION", "")
 end  -- MI2_SlashAction_TrimDownMobData()
 
 
@@ -286,12 +286,12 @@ end  -- MI2_SlashAction_TrimDownMobData()
 -- Update a specific existing mob by adding to it the given new Mob data.
 --
 local function MI2_UpdateMob( mobIndex, newMobInfo )
-	local existingMobInfo = MobInfoDB[mobIndex]
-	local existingMobData, newMobData = {}, {}
-	MI2_GetMobDataFromMobInfo( existingMobInfo, existingMobData )
-	MI2_GetMobDataFromMobInfo( newMobInfo, newMobData )
-	MI2_AddTwoMobs( existingMobData, newMobData )
-	MI2_StoreAllMobData( existingMobData, nil, nil, MI2_PlayerName, mobIndex )
+  local existingMobInfo = MobInfoDB[mobIndex]
+  local existingMobData, newMobData = {}, {}
+  MI2_GetMobDataFromMobInfo( existingMobInfo, existingMobData )
+  MI2_GetMobDataFromMobInfo( newMobInfo, newMobData )
+  MI2_AddTwoMobs( existingMobData, newMobData )
+  MI2_StoreAllMobData( existingMobData, nil, nil, MI2_PlayerName, mobIndex )
 end -- MI2_UpdateMob()
 
 -----------------------------------------------------------------------------
@@ -302,24 +302,24 @@ end -- MI2_UpdateMob()
 -- zone tables.
 --
 local function MI2_AdaptImportLocation( mobInfo, importZoneTable )
-	-- decode mob location information
-	local mobData = {}
-	MI2_DecodeMobLocation( mobInfo, mobData )
-	local loc = mobData.location
-	if not loc or not loc.z then return end
+  -- decode mob location information
+  local mobData = {}
+  MI2_DecodeMobLocation( mobInfo, mobData )
+  local loc = mobData.location
+  if not loc or not loc.z then return end
 
-	-- find correct zone name
-	local zone = mobData.location.z
-	local zoneName = importZoneTable[zone]
+  -- find correct zone name
+  local zone = mobData.location.z
+  local zoneName = importZoneTable[zone]
 
-	-- update the mobs location info
-	if zoneName and zoneName ~= "" then
-		MI2_SetNewZone( zoneName )
-		importZoneTable[MI2_CurZone] = zoneName
-		mobInfo.ml = (loc.x1 or "").."/"..(loc.y1 or "").."/"..(loc.x2 or "").."/"..(loc.y2 or "").."//"..MI2_CurZone
-	else
-		mobInfo.ml = nil
-	end
+  -- update the mobs location info
+  if zoneName and zoneName ~= "" then
+    MI2_SetNewZone( zoneName )
+    importZoneTable[MI2_CurZone] = zoneName
+    mobInfo.ml = (loc.x1 or "").."/"..(loc.y1 or "").."/"..(loc.x2 or "").."/"..(loc.y2 or "").."//"..MI2_CurZone
+  else
+    mobInfo.ml = nil
+  end
 end -- MI2_AdaptImportLocation()
 
 
@@ -329,84 +329,84 @@ end -- MI2_AdaptImportLocation()
 -- Import externally supplied MobInfo database into own database.
 --
 function MI2_SlashAction_ImportMobData()
-	local newMobs, updatedMobs, newHealth, newItems = 0, 0, 0, 0
-	local mobIndex, mobInfo, healthInfo
-	local oldCurZone = MI2_CurZone
+  local newMobs, updatedMobs, newHealth, newItems = 0, 0, 0, 0
+  local mobIndex, mobInfo, healthInfo
+  local oldCurZone = MI2_CurZone
 
-	chattext( " starting external database import ...." )
+  chattext( " starting external database import ...." )
 
-	-- import loot items into main loot item database
-	for itemId, itemInfo in pairs(MI2_ItemNameTable_Import) do
-		if not MI2_ItemNameTable[itemId] then
-			MI2_ItemNameTable[itemId] = itemInfo
-			newItems = newItems + 1
-		end
-	end
+  -- import loot items into main loot item database
+  for itemId, itemInfo in pairs(MI2_ItemNameTable_Import) do
+    if not MI2_ItemNameTable[itemId] then
+      MI2_ItemNameTable[itemId] = itemInfo
+      newItems = newItems + 1
+    end
+  end
 
-	-- import health data into main Mob health database
-	for mobIndex, newHealthData in pairs(MobHealthDB_Import) do
-	    local oldHealthData = MobHealthDB[mobIndex]
-		if not oldHealthData then
-			MobHealthDB[mobIndex] = newHealthData
-			newHealth = newHealth + 1
-		else
-		    local _, oldPct = MI2_HpDecode( oldHealthData )
-		    local _, newPct = MI2_HpDecode( newHealthData )
-		    if newPct and oldPct and newPct > 90 and newPct > oldPct then
-				MobHealthDB[mobIndex] = newHealthData
-				newHealth = newHealth + 1
-		    end
-		end
-	end
+  -- import health data into main Mob health database
+  for mobIndex, newHealthData in pairs(MobHealthDB_Import) do
+      local oldHealthData = MobHealthDB[mobIndex]
+    if not oldHealthData then
+      MobHealthDB[mobIndex] = newHealthData
+      newHealth = newHealth + 1
+    else
+        local _, oldPct = MI2_HpDecode( oldHealthData )
+        local _, newPct = MI2_HpDecode( newHealthData )
+        if newPct and oldPct and newPct > 90 and newPct > oldPct then
+        MobHealthDB[mobIndex] = newHealthData
+        newHealth = newHealth + 1
+        end
+    end
+  end
 
-	-- swap name/id in zone name table
-	if MI2_ZoneTable_Import.cnt then
-		local zoneName, zoneId
-		local newTable = {}
-		MI2_ZoneTable_Import.cnt = nil
-		for zoneName, zoneId in pairs(MI2_ZoneTable_Import) do
-			newTable[zoneId] = zoneName
-		end
-		MI2_ZoneTable_Import = newTable
-	end
+  -- swap name/id in zone name table
+  if MI2_ZoneTable_Import.cnt then
+    local zoneName, zoneId
+    local newTable = {}
+    MI2_ZoneTable_Import.cnt = nil
+    for zoneName, zoneId in pairs(MI2_ZoneTable_Import) do
+      newTable[zoneId] = zoneName
+    end
+    MI2_ZoneTable_Import = newTable
+  end
 
-	-- import Mobs into main Mob database
-	for mobIndex, mobInfo in pairs(MobInfoDB_Import) do
-		MI2_RemoveCharData( mobInfo )
-		MI2_AdaptImportLocation( mobInfo, MI2_ZoneTable_Import )
-		if MobInfoDB[mobIndex] then
-			updatedMobs = updatedMobs + 1
-			if MobInfoConfig.ImportOnlyNew == 0 then
-				-- import Mob that already exists
-				MI2_UpdateMob( mobIndex, mobInfo )
-			end
-		else
-			-- import unknown Mob
-			MobInfoDB[mobIndex] = mobInfo
-			newMobs = newMobs + 1
-		end
-	end
+  -- import Mobs into main Mob database
+  for mobIndex, mobInfo in pairs(MobInfoDB_Import) do
+    MI2_RemoveCharData( mobInfo )
+    MI2_AdaptImportLocation( mobInfo, MI2_ZoneTable_Import )
+    if MobInfoDB[mobIndex] then
+      updatedMobs = updatedMobs + 1
+      if MobInfoConfig.ImportOnlyNew == 0 then
+        -- import Mob that already exists
+        MI2_UpdateMob( mobIndex, mobInfo )
+      end
+    else
+      -- import unknown Mob
+      MobInfoDB[mobIndex] = mobInfo
+      newMobs = newMobs + 1
+    end
+  end
 
-	-- update item cross reference table after import
-	if MobInfoConfig.ImportOnlyNew == 0 then
-		MI2_BuildXRefItemTable()
-	end
+  -- update item cross reference table after import
+  if MobInfoConfig.ImportOnlyNew == 0 then
+    MI2_BuildXRefItemTable()
+  end
 
-	-- restore current zone ID after import
-	MI2_CurZone = oldCurZone
+  -- restore current zone ID after import
+  MI2_CurZone = oldCurZone
 
-	chattext( " imported "..newMobs.." new Mobs" )
-	chattext( " imported "..newHealth.." new health values" )
-	chattext( " imported "..newItems.." new loot items" )
-	if MobInfoConfig.ImportOnlyNew == 0 then
-		chattext( " updated data for "..updatedMobs.." existing Mobs" )
-	else
-		chattext( " did NOT update data for "..updatedMobs.." existing Mobs" )
-	end
+  chattext( " imported "..newMobs.." new Mobs" )
+  chattext( " imported "..newHealth.." new health values" )
+  chattext( " imported "..newItems.." new loot items" )
+  if MobInfoConfig.ImportOnlyNew == 0 then
+    chattext( " updated data for "..updatedMobs.." existing Mobs" )
+  else
+    chattext( " did NOT update data for "..updatedMobs.." existing Mobs" )
+  end
 
-	-- update database options frame
-	MobInfoConfig.ImportSignature = MI2_Import_Signature
-	MI2_DbOptionsFrameOnShow()
+  -- update database options frame
+  MobInfoConfig.ImportSignature = MI2_Import_Signature
+  MI2_DbOptionsFrameOnShow()
 end  -- MI2_SlashAction_ImportMobData()
 
 
@@ -417,10 +417,10 @@ end  -- MI2_SlashAction_ImportMobData()
 -- This function will ask for confirmation before deleting.
 --
 function MI2_SlashAction_DeleteSearch()
-	local confirmationText = string.format( MI_TXT_DEL_SEARCH_CONFIRM, MI2_NumMobsFound )
-	StaticPopupDialogs["MOBINFO_CONFIRMATION"].text = confirmationText
-	StaticPopupDialogs["MOBINFO_CONFIRMATION"].OnAccept = MI2_DeleteSearchResultMobs
-	local dialog = StaticPopup_Show( "MOBINFO_CONFIRMATION", "")
+  local confirmationText = string.format( MI_TXT_DEL_SEARCH_CONFIRM, MI2_NumMobsFound )
+  StaticPopupDialogs["MOBINFO_CONFIRMATION"].text = confirmationText
+  StaticPopupDialogs["MOBINFO_CONFIRMATION"].OnAccept = MI2_DeleteSearchResultMobs
+  local dialog = StaticPopup_Show( "MOBINFO_CONFIRMATION", "")
 end -- MI2_SlashAction_DeleteSearch()
 
 
@@ -430,10 +430,10 @@ end -- MI2_SlashAction_DeleteSearch()
 -- Add all Slash Commands
 --
 function MI2_SlashInit()
-	SlashCmdList["MOBINFO"] = MI2_SlashParse
-	SLASH_MOBINFO1 = "/mobinfo" 
-	SLASH_MOBINFO2 = "/mobinfo2" 
-	SLASH_MOBINFO3 = "/mi2" 
+  SlashCmdList["MOBINFO"] = MI2_SlashParse
+  SLASH_MOBINFO1 = "/mobinfo" 
+  SLASH_MOBINFO2 = "/mobinfo2" 
+  SLASH_MOBINFO3 = "/mi2" 
 end  -- MI2_SlashInit()
 
 
@@ -450,46 +450,46 @@ end  -- MI2_SlashInit()
 -- ==> Therefor the optional variable self now the second in the function (only used, when config-parameters are changed)
 --
 function MI2_SlashParse(msg, self)
-	-- extract option name and option argument from message string
-	local _, _, cmd, param = string.find( string.lower(msg), "([%w_]*)[ ]*([-%w]*)") 
-	
-	-- handle all simple commands that dont require parsing right here
-	-- handle show/hide of options dialog first of all
-	if  not cmd  or  cmd == ""  or  cmd == "config"  then
-		if MI2_OptionsFrame:IsVisible() then
-			MI2_OptionsFrame:Hide()
-		else
-			MI2_OptionsFrame:Show()
-		end
-		return
-	elseif cmd == 'version' then
-		chattext( ' MobInfo-2 Version '..miVersionNo )
-		return
-	elseif cmd == 'update' and MI2_UpdatePrices then
-		MI2_UpdatePrices()
-		return
-	elseif cmd == 'help' then
-		chattext( ' Usage: enter /mobinfo2 or /mi2 to open interface' )
-		chattext( ' for AddOn help go to '..MI_LightGreen..'http://www.dizzarian.com/forums/viewforum.php?f=16' )
-		return
-	end
+  -- extract option name and option argument from message string
+  local _, _, cmd, param = string.find( string.lower(msg), "([%w_]*)[ ]*([-%w]*)") 
+  
+  -- handle all simple commands that dont require parsing right here
+  -- handle show/hide of options dialog first of all
+  if  not cmd  or  cmd == ""  or  cmd == "config"  then
+    if MI2_OptionsFrame:IsVisible() then
+      MI2_OptionsFrame:Hide()
+    else
+      MI2_OptionsFrame:Show()
+    end
+    return
+  elseif cmd == 'version' then
+    chattext( ' MobInfo-2 Version '..miVersionNo )
+    return
+  elseif cmd == 'update' and MI2_UpdatePrices then
+    MI2_UpdatePrices()
+    return
+  elseif cmd == 'help' then
+    chattext( ' Usage: enter /mobinfo2 or /mi2 to open interface' )
+    chattext( ' for AddOn help go to '..MI_LightGreen..'http://www.dizzarian.com/forums/viewforum.php?f=16' )
+    return
+  end
 
-	-- search for the option data structure matching the command
-	local optionName, optionData
-	for idx, val in pairs(MI2_OPTIONS) do
-		local lower_opt = string.lower( idx )
-		local optionCommand = string.sub(lower_opt, 8)
-		if cmd == lower_opt or cmd == optionCommand then
-			optionName = string.sub(idx, 8)
-			optionData = val
-			break
-		end
-	end
+  -- search for the option data structure matching the command
+  local optionName, optionData
+  for idx, val in pairs(MI2_OPTIONS) do
+    local lower_opt = string.lower( idx )
+    local optionCommand = string.sub(lower_opt, 8)
+    if cmd == lower_opt or cmd == optionCommand then
+      optionName = string.sub(idx, 8)
+      optionData = val
+      break
+    end
+  end
 
-	-- now call the option handler for the more complex commands
-	if  optionData  then
-		MI2_OptionParse( self, optionName, optionData, param )
-	end
+  -- now call the option handler for the more complex commands
+  if  optionData  then
+    MI2_OptionParse( self, optionName, optionData, param )
+  end
 end -- of MI2_SlashParse()
 
 
@@ -505,61 +505,61 @@ end -- of MI2_SlashParse()
 --     handler function that must correspond to a specific naming convention
 --
 function MI2_OptionParse( self, optionName, optionData, param )
-	-- handle the option according to its option type: its either a
-	-- switch being toggleg, a value being set, or a special action
-	if optionData.val then
-		-- it is a slider setting a value
-		-- get new option value from parameter and set it
-		local optValue = tonumber( param ) or 0
-		MobInfoConfig[optionName] = optValue
-		if  updateOptions  then
-			chattext( optionData.text.." : "..MI_Green..optValue )
-		end
+  -- handle the option according to its option type: its either a
+  -- switch being toggleg, a value being set, or a special action
+  if optionData.val then
+    -- it is a slider setting a value
+    -- get new option value from parameter and set it
+    local optValue = tonumber( param ) or 0
+    MobInfoConfig[optionName] = optValue
+    if  updateOptions  then
+      chattext( optionData.text.." : "..MI_Green..optValue )
+    end
 
-	elseif optionData.txt then
-		-- it is a text based option
-		MobInfoConfig[optionName] = param
-		if  updateOptions  then
-			chattext( optionData.text.." : "..MI_Green..param )
-		end
+  elseif optionData.txt then
+    -- it is a text based option
+    MobInfoConfig[optionName] = param
+    if  updateOptions  then
+      chattext( optionData.text.." : "..MI_Green..param )
+    end
 
-	elseif  MobInfoConfig[optionName]  then
-		-- it is a switch toggle option:
-		-- get current option value and toggle it to the opposite state (On<->Off)
-		local valTxt = { val0 = "-OFF-",  val1 = "-ON-" }
-		local optValue = MobInfoConfig[ optionName ]
-		optValue = 1 - optValue  -- toggle option
-		MobInfoConfig[optionName] = optValue
-		if optionData.text and optionData.text ~= "" then
-			chattext( optionData.text.." : "..MI_Green..valTxt["val"..optValue] )
-		end
+  elseif  MobInfoConfig[optionName]  then
+    -- it is a switch toggle option:
+    -- get current option value and toggle it to the opposite state (On<->Off)
+    local valTxt = { val0 = "-OFF-",  val1 = "-ON-" }
+    local optValue = MobInfoConfig[ optionName ]
+    optValue = 1 - optValue  -- toggle option
+    MobInfoConfig[optionName] = optValue
+    if optionData.text and optionData.text ~= "" then
+      chattext( optionData.text.." : "..MI_Green..valTxt["val"..optValue] )
+    end
 
-		-- some toggle switches control recording options which in turn controls events
-		MI2_InitializeEventTable(self)
-	else
-		-- special action commands have a corresponding handler function
-		local actionHandlerName = "MI2_SlashAction_"..optionName
-		local actionHandler = _G[actionHandlerName]
-		if  actionHandler  then
-			actionHandler(self)
-			updateOptions = true -- for AllOn, AllOff, etc.
-		end
-	end
+    -- some toggle switches control recording options which in turn controls events
+    MI2_InitializeEventTable(self)
+  else
+    -- special action commands have a corresponding handler function
+    local actionHandlerName = "MI2_SlashAction_"..optionName
+    local actionHandler = _G[actionHandlerName]
+    if  actionHandler  then
+      actionHandler(self)
+      updateOptions = true -- for AllOn, AllOff, etc.
+    end
+  end
 
-	-- update position and visibility of minimap button
-	-- (80/80 is circle radius, 50/52 is circle center)
-	if optionName == "MMButtonPos" then
-		local pos = MobInfoConfig.MMButtonPos
-		MI2_MinimapButton:SetPoint("TOPLEFT", "Minimap", "TOPLEFT",50 - (80 * cos(pos)), (80 * sin(pos)) - 52 )
-	end
-	if MobInfoConfig.ShowMMButton == 1 then
-		MI2_MinimapButton:Show()
-	else
-		MI2_MinimapButton:Hide()
-	end
+  -- update position and visibility of minimap button
+  -- (80/80 is circle radius, 50/52 is circle center)
+  if optionName == "MMButtonPos" then
+    local pos = MobInfoConfig.MMButtonPos
+    MI2_MinimapButton:SetPoint("TOPLEFT", "Minimap", "TOPLEFT",50 - (80 * cos(pos)), (80 * sin(pos)) - 52 )
+  end
+  if MobInfoConfig.ShowMMButton == 1 then
+    MI2_MinimapButton:Show()
+  else
+    MI2_MinimapButton:Hide()
+  end
 
-	-- update everything that might depend on config actions
-	MI2_MobHealth_SetPos()
-	MI2_UpdateOptions()
-	MI2_SetupTooltip()
+  -- update everything that might depend on config actions
+  MI2_MobHealth_SetPos()
+  MI2_UpdateOptions()
+  MI2_SetupTooltip()
 end  -- MI2_OptionParse()

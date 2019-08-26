@@ -282,7 +282,7 @@ MI2_OPTIONS["MI2_OptManaPosY"] =
 
 MI2_OPTIONS["MI2_OptTargetFont"] = 
 { text = "Schriftart"; help = "Schriftart f\195\188r Darstellung des Gesundheits- und Manawertes";
-	  choice1 = "NumberFont"; choice2 = "GameFont"; choice3 = "ItemTextFont" }
+    choice1 = "NumberFont"; choice2 = "GameFont"; choice3 = "ItemTextFont" }
 
 MI2_OPTIONS["MI2_OptTargetFontSize"] = 
 { text = "Schriftgr\195\182\195\159e"; help = "Schriftgr\195\182\195\159e f\195\188r Darstellung des Gesundheits- und Manawertes"; }
