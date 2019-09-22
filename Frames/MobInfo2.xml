@@ -3,7 +3,9 @@
   <Frame name="MI2_MobInfoFrame">
     <Scripts>
       <OnLoad>MI2_OnLoad(self)</OnLoad>
-      <OnEvent>MI2_OnEvent(self, event, ...);</OnEvent></Scripts></Frame>
+      <OnEvent>MI2_OnEvent(self, event, ...);</OnEvent>
+    </Scripts>
+  </Frame>
   <Frame name="MI2_MobHealthFrame" toplevel="true" frameStrata="LOW" movable="true" enableMouse="true" parent="TargetFrame">
     <Size x="128" y="32"/>
     <Anchors>

@@ -3,7 +3,7 @@
 --
 -- Main module of MobInfo-2 AddOn
 
-miVersionNo = '8.1.0'
+miVersionNo = '1.0.0'
 
 -- stub for now to return power
 function UnitMana(unitId)
@@ -227,12 +227,12 @@ end -- MI2_GetMobData()
     ItemFilter="", ImportOnlyNew=1, SaveResist=1, ShowItemPrice = 0, CombinedMode = 0,
     UseGameTT=0, HideAnchor=0, ShowIGrey=0, ShowIWhite=1, ShowIGreen=1, ShowIBlue=1, ShowIPurple=1 } 
 
-  -- initialize MobInfoConfig 
+  -- initialize MobInfoConfig
   if not MobInfoConfig then
     MobInfoConfig = { }
   end
 
-  -- make the 2 column layout active by default 
+  -- make the 2 column layout active by default
   if MobInfoConfig.ShowBlankLines then MobInfoConfig.CompactMode = 1 end
   if MobInfoConfig.MMButtonPos == 20 then MobInfoConfig.MMButtonPos = 356 end
 
@@ -282,7 +282,7 @@ function MI2_GetUnitBasedMobData( mobIndex, mobData, unitId )
   if not unitId then 
     mobData.healthText = "0/"..(mobData.healthMax or "???")
   else
-  --[[
+
     local mobPPP = MobHealth_PPP(mobIndex)
     if mobPPP <= 0 then mobPPP = 1 end
     mobData.healthMax = floor(mobPPP * 100 + 0.5)
@@ -292,10 +292,10 @@ function MI2_GetUnitBasedMobData( mobIndex, mobData, unitId )
     else
       mobData.healthCur = UnitHealth(unitId)
     end
-  --]]
+
     --  why is the above necessary? just use values from the server
-    mobData.healthMax = UnitHealthMax( unitId )
-    mobData.healthCur = UnitHealth( unitId )
+    --mobData.healthMax = UnitHealthMax( unitId )
+    --mobData.healthCur = UnitHealth( unitId )
     mobData.manaCur = UnitMana( unitId )
     mobData.manaMax = UnitManaMax( unitId )
 

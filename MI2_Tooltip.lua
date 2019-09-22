@@ -486,6 +486,9 @@ end -- MI2_UpdateTooltip
 -- MI2_CreateTooltip()
 --
 function MI2_CreateTooltip( name, level, unit, isMob )
+  if (not name) then
+    name = ''
+  end
   local mobIndex = name..":"..level
   local mobData = MI2_BuildTooltipMob( name, level, unit, isMob )
   if unit and isMob then

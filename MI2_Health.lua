@@ -9,7 +9,7 @@
 -- observed through the WoW "UnitHealth" event.
 --
 -- This module now implements a totally new health calculation
--- algorithm with an inctredible acuracy.
+-- algorithm with an incredible acuracy.
 --
 
 
@@ -49,7 +49,7 @@ end  -- MI2_HpDecode()
 --
 function MobHealth_GetTargetCurHP()
   return MI2_Target.curHealth
-end	 --	of MobHealth_GetTargetCurHP()
+end
 
 
 -----------------------------------------------------------------------------
@@ -66,7 +66,7 @@ end	 --	of MobHealth_GetTargetCurHP()
 --
 function MobHealth_GetTargetMaxHP()
   return MI2_Target.maxHealth
-end	 --	of MobHealth_GetTargetMaxHP()
+end
 
 
 -----------------------------------------------------------------------------
@@ -139,7 +139,7 @@ local function MI2_HpGet( database, index )
   end
 
   return pts, quality
-end  -- MI2_HpGet()
+end
 
 
 -----------------------------------------------------------------------------
@@ -158,9 +158,8 @@ local function MI2_HpSet( database, index, hpMax, quality )
     pct = 50
     pts = floor(hpMax / 2 + 0.51)
   end
---midebug( "writing HP to DB: new=["..pts.."/"..pct.."], old=["..(database[index] or "nil").."], hpm="..hpMax..", q="..quality, 1 )
   database[index] = pts.."/"..pct
-end  -- MI2_HpSet()
+end
 
 
 -----------------------------------------------------------------------------
@@ -191,7 +190,7 @@ function MI2_HpSetNewTarget()
   else
     MobHealth_Display()
   end
-end -- MI2_HpSetNewTarget()
+end
 
 
 -----------------------------------------------------------------------------
@@ -240,7 +239,7 @@ function MobHealth_Display( )
 
   MI2_MobHealthText:SetText( healthText or "" )
   MI2_MobManaText:SetText( manaText or "" )
-end	 --	MobHealth_Display()
+end
 
 
 -----------------------------------------------------------------------------
@@ -268,8 +267,7 @@ local function MI2_MobHealth_SetFont( fontId, fontSize )
     MI2_MobHealthText:SetFont( fontName, fontSize )
     MI2_MobManaText:SetFont( fontName, fontSize )
   end
-
-end	 --	of MI2_MobHealth_SetFont()
+end
 
 
 -----------------------------------------------------------------------------
@@ -296,7 +294,7 @@ function MI2_MobHealth_SetPos( )
 
   -- redisplay health / mana values
   MobHealth_Display()
-end	 --	of MI2_MobHealth_SetPos()
+end
 
 
 -----------------------------------------------------------------------------
@@ -317,7 +315,7 @@ end
 function MI2_SaveTargetHealthData( updateOnly )
   -- nothing to do if there is no health data
   if MI2_HpData == nil then return end
-  
+
     local newHpMax = MI2_HpData.newMax
     local newQuality = MI2_HpData.newQuality
 
@@ -333,7 +331,7 @@ function MI2_SaveTargetHealthData( updateOnly )
     end
     MI2_HpSet( MI2_Target.healthDB, MI2_Target.index, newHpMax, newQuality )
   end
-end -- MI2_SaveTargetHealthData()
+end
 
 
 -----------------------------------------------------------------------------
@@ -348,7 +346,7 @@ function MI2_MobHealth_ClearTargetData()
     MobHealth_Display()
     MI2_HpData = nil
   end
-end  -- MI2_MobHealth_ClearTargetData()
+end
 
 
 -----------------------------------------------------------------------------
